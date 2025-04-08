@@ -42,13 +42,7 @@ This isn't just another travel tool. It's your empathetic, helpful, and aestheti
 
 ## 📁 Project Structure
 
-travel-agent-hackathon/
-├── frontend/         # Frontend interface & UI logic
-├── backend/          # APIs & GPT communication
-├── docs/             # Product documentation & slides
-├── .github/          # GitHub Actions (CI/CD)
-├── LICENSE
-└── README.md         # You’re reading this :)
+TBD
 
 
 ---
