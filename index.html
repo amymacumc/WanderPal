@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WanderPal - 您的AI旅行伴侣</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- 启动屏幕 -->
+        <div class="screen" id="splash-screen">
+            <div class="splash-content">
+                <div class="logo">
+                    <span class="logo-icon">🌍</span>
+                    <h1>WanderPal</h1>
+                </div>
+                <p class="tagline">您的AI旅行伴侣</p>
+                <button class="btn btn-primary" onclick="showScreen('welcome-screen')">开始体验</button>
+            </div>
+        </div>
+
+        <!-- 欢迎屏幕 -->
+        <div class="screen hidden" id="welcome-screen">
+            <div class="welcome-content">
+                <h2>您好，旅行者！</h2>
+                <p>我是WanderPal，您的私人AI旅行伴侣。</p>
+                <p>让我帮您找到完美的旅程。</p>
+                <div class="welcome-buttons">
+                    <button class="btn btn-primary" onclick="showScreen('chat-screen')">开始新对话</button>
+                    <button class="btn btn-secondary" onclick="showScreen('archives-screen')">查看档案</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 聊天屏幕 -->
+        <div class="screen hidden" id="chat-screen">
+            <div class="header">
+                <h2>WanderPal</h2>
+            </div>
+            <div class="chat-container" id="chat-messages">
+                <div class="message agent-message">
+                    <div class="message-bubble">
+                        <p>我很乐意帮您规划一段符合您心情的旅程。可以问您几个问题吗？</p>
+                    </div>
+                </div>
+                <div class="message agent-message">
+                    <div class="message-bubble">
+                        <p>您如何描述自己的性格？</p>
+                    </div>
+                </div>
+                <div class="quick-replies">
+                    <button class="quick-reply" onclick="selectPersonality('introverted')">内向型</button>
+                    <button class="quick-reply" onclick="selectPersonality('extroverted')">外向型</button>
+                    <button class="quick-reply" onclick="selectPersonality('explorer')">探索者</button>
+                    <button class="quick-reply" onclick="selectPersonality('comfort')">安逸型</button>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="输入您的回复...">
+                <button class="send-button">发送</button>
+            </div>
+            <div class="bottom-nav">
+                <button class="nav-btn" onclick="showScreen('welcome-screen')">🏠</button>
+                <button class="nav-btn active">💬</button>
+                <button class="nav-btn" onclick="showScreen('archives-screen')">📁</button>
+            </div>
+        </div>
+
+        <!-- 档案屏幕 -->
+        <div class="screen hidden" id="archives-screen">
+            <div class="header">
+                <h2>档案</h2>
+            </div>
+            <div class="archives-container">
+                <h3>您的已保存旅程</h3>
+                <div class="archive-cards">
+                    <div class="archive-card" onclick="showScreen('itinerary-screen')">
+                        <div class="card-image"
+                            style="background-image: url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')">
+                        </div>
+                        <div class="card-info">
+                            <h4>日本京都</h4>
+                            <p>2023年5月15-22日</p>
+                            <span class="tag">#文化休闲</span>
+                        </div>
+                    </div>
+                    <div class="archive-card">
+                        <div class="card-image"
+                            style="background-image: url('https://images.unsplash.com/photo-1528819622765-d6bcf132f793?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')">
+                        </div>
+                        <div class="card-info">
+                            <h4>哥斯达黎加</h4>
+                            <p>2023年12月1-10日</p>
+                            <span class="tag">#自然逃离</span>
+                        </div>
+                    </div>
+                    <div class="archive-card">
+                        <div class="card-image"
+                            style="background-image: url('https://images.unsplash.com/photo-1539037116277-4db20889f2d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')">
+                        </div>
+                        <div class="card-info">
+                            <h4>西班牙巴塞罗那</h4>
+                            <p>2024年3月5-12日</p>
+                            <span class="tag">#城市冒险</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-nav">
+                <button class="nav-btn" onclick="showScreen('welcome-screen')">🏠</button>
+                <button class="nav-btn" onclick="showScreen('chat-screen')">💬</button>
+                <button class="nav-btn active">📁</button>
+            </div>
+        </div>
+
+        <!-- 行程屏幕 -->
+        <div class="screen hidden" id="itinerary-screen">
+            <div class="header">
+                <button class="back-button" onclick="showScreen('archives-screen')">←</button>
+                <h2>京都之旅</h2>
+            </div>
+            <div class="itinerary-container">
+                <h3>第1天</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <h4>上午</h4>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="attraction">
+                                <div class="attraction-image"
+                                    style="background-image: url('https://images.unsplash.com/photo-1584873603760-e7ef641e5fcc?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')">
+                                </div>
+                                <div class="attraction-info">
+                                    <h5>岚山竹林</h5>
+                                    <p>🚶‍♂️ 2小时 | $</p>
+                                    <p>日本最著名的竹林小径，感受宁静氛围</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <h4>下午</h4>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="attraction">
+                                <div class="attraction-image"
+                                    style="background-image: url('https://images.unsplash.com/photo-1583080496414-7c90210d5218?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')">
+                                </div>
+                                <div class="attraction-info">
+                                    <h5>天龙寺</h5>
+                                    <p>🚌 从竹林30分钟 | $$</p>
+                                    <p>世界遗产，拥有美丽的日式庭院</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <h4>今日路线</h4>
+                    <div class="map">
+                        <img src="https://maps.googleapis.com/maps/api/staticmap?center=Arashiyama,Kyoto&zoom=14&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:A%7C35.0169,135.6745&markers=color:red%7Clabel:B%7C35.0170,135.6682&path=color:0x5BBFBA%7Cweight:5%7C35.0169,135.6745%7C35.0170,135.6682&key=YOUR_API_KEY"
+                            alt="地图路线">
+                    </div>
+                </div>
+                <div class="feedback-buttons">
+                    <button class="btn btn-icon">👍</button>
+                    <button class="btn btn-icon">👎</button>
+                    <button class="btn btn-primary">保存到档案</button>
+                </div>
+            </div>
+            <div class="bottom-nav">
+                <button class="nav-btn" onclick="showScreen('welcome-screen')">🏠</button>
+                <button class="nav-btn" onclick="showScreen('chat-screen')">💬</button>
+                <button class="nav-btn active">📁</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
