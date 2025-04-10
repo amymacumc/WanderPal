@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WanderPal - 欢迎屏幕</title>
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #F9F9F9;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        /* 页面容器 */
+        .page-container {
+            position: relative;
+            width: 390px;
+            height: 844px;
+            margin: 0 auto;
+            background-color: #FFFFFF;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 欢迎屏幕样式 */
+        .welcome-content {
+            text-align: center;
+            padding: 32px;
+            max-width: 80%;
+        }
+
+        .welcome-content h2 {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #3A9E99;
+            margin-bottom: 24px;
+        }
+
+        .welcome-content p {
+            margin-bottom: 16px;
+            color: #666666;
+        }
+
+        .welcome-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .btn {
+            padding: 16px 24px;
+            border-radius: 16px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: #5BBFBA;
+            color: #FFFFFF;
+            border: none;
+            box-shadow: 0 4px 8px rgba(91, 191, 186, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: #FFFFFF;
+            color: #5BBFBA;
+            border: 1px solid #5BBFBA;
+        }
+
+        /* 页面标题 */
+        .page-title {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            color: #666;
+            font-size: 14px;
+            background-color: rgba(240, 240, 240, 0.8);
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-title">欢迎屏幕</div>
+    <div class="page-container">
+        <div class="welcome-content">
+            <h2>您好，旅行者！</h2>
+            <p>我是WanderPal，您的私人AI旅行伴侣。</p>
+            <p>让我帮您找到完美的旅程。</p>
+            <div class="welcome-buttons">
+                <button class="btn btn-primary">开始新对话</button>
+                <button class="btn btn-secondary">查看档案</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

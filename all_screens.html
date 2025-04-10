@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WanderPal - 所有界面预览</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f0f0f0;
+            color: #333333;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #3A9E99;
+            margin-bottom: 20px;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .header {
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header p {
+            margin-bottom: 12px;
+        }
+
+        .color-palette {
+            display: flex;
+            gap: 12px;
+            margin: 16px 0;
+            flex-wrap: wrap;
+        }
+
+        .color-sample {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.75rem;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .color-name {
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .screens-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+            gap: 20px;
+        }
+
+        .screen-frame {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            height: 900px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .screen-title {
+            padding: 12px;
+            background-color: #5BBFBA;
+            color: white;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .screen-content {
+            flex-grow: 1;
+            border: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .select-view {
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .view-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .view-option {
+            padding: 8px 16px;
+            background-color: #e0e0e0;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .view-option.active {
+            background-color: #5BBFBA;
+            color: white;
+        }
+
+        .screen-group {
+            margin-bottom: 40px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* 内嵌样式 */
+        .embedded-screen {
+            position: relative;
+            width: 390px;
+            height: 844px;
+            margin: 0 auto;
+            background-color: #F9F9F9;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: none;
+        }
+
+        .embedded-screen.active {
+            display: block;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .screens-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🌍 WanderPal界面预览</h1>
+
+        <div class="header">
+            <p>WanderPal是一款基于用户画像与情绪状态来定制旅行计划的AI旅行伴侣。以下是应用的主要界面，采用疗愈/温柔设计风格。</p>
+
+            <div class="color-palette">
+                <div class="color-sample" style="background-color: #5BBFBA;">
+                    <span class="color-name">主色</span>
+                    <span>#5BBFBA</span>
+                </div>
+                <div class="color-sample" style="background-color: #8FD3D0;">
+                    <span class="color-name">主色-亮</span>
+                    <span>#8FD3D0</span>
+                </div>
+                <div class="color-sample" style="background-color: #3A9E99;">
+                    <span class="color-name">主色-暗</span>
+                    <span>#3A9E99</span>
+                </div>
+                <div class="color-sample" style="background-color: #F5E2C8; color: #333;">
+                    <span class="color-name" style="color: #333;">次要色</span>
+                    <span style="color: #333;">#F5E2C8</span>
+                </div>
+                <div class="color-sample" style="background-color: #F78536;">
+                    <span class="color-name">强调色</span>
+                    <span>#F78536</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="select-view">
+            <h3 style="margin-bottom: 10px;">选择预览方式：</h3>
+            <div class="view-options">
+                <button class="view-option" onclick="showAllScreens()">所有界面</button>
+                <button class="view-option" onclick="showOnlyGroup('onboarding')">启动/欢迎界面</button>
+                <button class="view-option" onclick="showOnlyGroup('chat')">聊天界面</button>
+                <button class="view-option" onclick="showOnlyGroup('itinerary')">行程界面</button>
+                <button class="view-option" onclick="showOnlyGroup('archives')">档案界面</button>
+            </div>
+        </div>
+
+        <div class="screens-container">
+            <!-- 启动屏幕 -->
+            <div class="screen-frame" data-group="onboarding">
+                <div class="screen-title">启动屏幕</div>
+                <iframe src="splash.html" class="screen-content" frameborder="0"></iframe>
+            </div>
+
+            <!-- 欢迎屏幕 -->
+            <div class="screen-frame" data-group="onboarding">
+                <div class="screen-title">欢迎屏幕</div>
+                <iframe src="welcome.html" class="screen-content" frameborder="0"></iframe>
+            </div>
+
+            <!-- 聊天-性格选择 -->
+            <div class="screen-frame" data-group="chat">
+                <div class="screen-title">聊天-性格选择</div>
+                <iframe src="chat_personality.html" class="screen-content" frameborder="0"></iframe>
+            </div>
+
+            <!-- 聊天-情绪选择 -->
+            <div class="screen-frame" data-group="chat">
+                <div class="screen-title">聊天-情绪选择</div>
+                <iframe src="chat_emotion.html" class="screen-content" frameborder="0"></iframe>
+            </div>
+
+            <!-- 聊天-目的地推荐 -->
+            <div class="screen-frame" data-group="chat">
+                <div class="screen-title">聊天-目的地推荐</div>
+                <iframe src="chat_recommendations.html" class="screen-content" frameborder="0"></iframe>
+            </div>
+
+            <!-- 行程详情 -->
+            <div class="screen-frame" data-group="itinerary">
+                <div class="screen-title">行程详情</div>
+                <iframe src="itinerary.html" class="screen-content" frameborder="0"></iframe>
+            </div>
+
+            <!-- 档案页面 -->
+            <div class="screen-frame" data-group="archives">
+                <div class="screen-title">档案页面</div>
+                <iframe src="archives.html" class="screen-content" frameborder="0"></iframe>
+            </div>
+
+            <!-- 愿景板 -->
+            <div class="screen-frame" data-group="archives">
+                <div class="screen-title">愿景板</div>
+                <iframe src="vision_board.html" class="screen-content" frameborder="0"></iframe>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>WanderPal - 您的AI旅行伴侣 | 所有界面预览</p>
+        </div>
+    </div>
+
+    <script>
+        // 设置活跃按钮
+        function setActiveButton(group) {
+            const buttons = document.querySelectorAll('.view-option');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+                if (button.textContent.toLowerCase().includes(group) ||
+                    (group === 'all' && button.textContent.includes('所有'))) {
+                    button.classList.add('active');
+                }
+            });
+        }
+
+        // 显示所有界面
+        function showAllScreens() {
+            const frames = document.querySelectorAll('.screen-frame');
+            frames.forEach(frame => {
+                frame.style.display = 'flex';
+            });
+            setActiveButton('all');
+        }
+
+        // 只显示特定组的界面
+        function showOnlyGroup(group) {
+            const frames = document.querySelectorAll('.screen-frame');
+            frames.forEach(frame => {
+                if (frame.getAttribute('data-group') === group) {
+                    frame.style.display = 'flex';
+                } else {
+                    frame.style.display = 'none';
+                }
+            });
+            setActiveButton(group);
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function () {
+            showAllScreens();
+        });
+    </script>
+</body>
+
+</html>

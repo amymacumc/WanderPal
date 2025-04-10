@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WanderPal - 启动屏幕</title>
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #F9F9F9;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        /* 页面容器 */
+        .page-container {
+            position: relative;
+            width: 390px;
+            height: 844px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #8FD3D0, #5BBFBA);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 启动屏幕样式 */
+        .splash-content {
+            text-align: center;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo {
+            margin-bottom: 32px;
+        }
+
+        .logo-icon {
+            font-size: 5rem;
+            margin-bottom: 16px;
+        }
+
+        .logo h1 {
+            font-family: 'Nunito', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 8px;
+        }
+
+        .tagline {
+            color: #FFFFFF;
+            font-size: 1.2rem;
+            margin-bottom: 48px;
+        }
+
+        .btn {
+            padding: 16px 24px;
+            background-color: #FFFFFF;
+            color: #5BBFBA;
+            border: none;
+            border-radius: 16px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 页面标题 */
+        .page-title {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            color: #666;
+            font-size: 14px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-title">启动屏幕</div>
+    <div class="page-container">
+        <div class="splash-content">
+            <div class="logo">
+                <span class="logo-icon">🌍</span>
+                <h1>WanderPal</h1>
+            </div>
+            <p class="tagline">您的AI旅行伴侣</p>
+            <button class="btn">开始体验</button>
+        </div>
+    </div>
+</body>
+
+</html>

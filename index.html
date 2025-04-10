@@ -4,186 +4,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WanderPal - 您的AI旅行伴侣</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Inter:wght@400;500&display=swap"
-        rel="stylesheet">
+    <title>WanderPal - 页面索引</title>
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #F9F9F9;
+            color: #333333;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #3A9E99;
+            margin-bottom: 24px;
+            font-family: 'Nunito', sans-serif;
+            text-align: center;
+        }
+
+        h2 {
+            color: #3A9E99;
+            margin: 32px 0 16px;
+            font-family: 'Nunito', sans-serif;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #5BBFBA;
+        }
+
+        .page-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .page-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .page-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .page-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+
+        .page-info {
+            padding: 12px;
+        }
+
+        .page-info h3 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+            color: #333333;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .page-info p {
+            font-size: 0.85rem;
+            color: #666666;
+            margin-bottom: 8px;
+        }
+
+        .view-btn {
+            display: inline-block;
+            padding: 4px 12px;
+            background-color: #5BBFBA;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            transition: background-color 0.2s ease;
+        }
+
+        .view-btn:hover {
+            background-color: #3A9E99;
+        }
+
+        .intro {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 32px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .intro p {
+            margin-bottom: 12px;
+        }
+
+        .color-palette {
+            display: flex;
+            gap: 12px;
+            margin: 16px 0;
+            flex-wrap: wrap;
+        }
+
+        .color-sample {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.75rem;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .color-name {
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        footer {
+            margin-top: 48px;
+            text-align: center;
+            color: #666666;
+            font-size: 0.85rem;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="app-container">
-        <!-- 启动屏幕 -->
-        <div class="screen" id="splash-screen">
-            <div class="splash-content">
-                <div class="logo">
-                    <span class="logo-icon">🌍</span>
-                    <h1>WanderPal</h1>
+    <div class="container">
+        <h1>🌍 WanderPal 静态页面展示</h1>
+
+        <div class="intro">
+            <p>WanderPal是一款基于用户画像与情绪状态来定制旅行计划的AI旅行伴侣。下面是应用的主要界面静态HTML预览，用于Figma设计参考。</p>
+
+            <h3>设计系统</h3>
+            <p>应用采用疗愈系/温柔风格，以下是主要色彩：</p>
+
+            <div class="color-palette">
+                <div class="color-sample" style="background-color: #5BBFBA;">
+                    <span class="color-name">主色</span>
+                    <span>#5BBFBA</span>
                 </div>
-                <p class="tagline">您的AI旅行伴侣</p>
-                <button class="btn btn-primary" onclick="showScreen('welcome-screen')">开始体验</button>
+                <div class="color-sample" style="background-color: #8FD3D0;">
+                    <span class="color-name">主色-亮</span>
+                    <span>#8FD3D0</span>
+                </div>
+                <div class="color-sample" style="background-color: #3A9E99;">
+                    <span class="color-name">主色-暗</span>
+                    <span>#3A9E99</span>
+                </div>
+                <div class="color-sample" style="background-color: #F5E2C8; color: #333;">
+                    <span class="color-name" style="color: #333;">次要色</span>
+                    <span style="color: #333;">#F5E2C8</span>
+                </div>
+                <div class="color-sample" style="background-color: #F78536;">
+                    <span class="color-name">强调色</span>
+                    <span>#F78536</span>
+                </div>
             </div>
         </div>
 
-        <!-- 欢迎屏幕 -->
-        <div class="screen hidden" id="welcome-screen">
-            <div class="welcome-content">
-                <h2>您好，旅行者！</h2>
-                <p>我是WanderPal，您的私人AI旅行伴侣。</p>
-                <p>让我帮您找到完美的旅程。</p>
-                <div class="welcome-buttons">
-                    <button class="btn btn-primary" onclick="showScreen('chat-screen')">开始新对话</button>
-                    <button class="btn btn-secondary" onclick="showScreen('archives-screen')">查看档案</button>
+        <h2>应用界面</h2>
+
+        <div class="page-list">
+            <div class="page-card">
+                <img src="https://via.placeholder.com/300x150/5BBFBA/FFFFFF?text=启动屏幕" alt="启动屏幕">
+                <div class="page-info">
+                    <h3>启动屏幕</h3>
+                    <p>应用首屏，展示品牌标识</p>
+                    <a href="splash.html" class="view-btn" target="_blank">查看</a>
+                </div>
+            </div>
+
+            <div class="page-card">
+                <img src="https://via.placeholder.com/300x150/5BBFBA/FFFFFF?text=欢迎屏幕" alt="欢迎屏幕">
+                <div class="page-info">
+                    <h3>欢迎屏幕</h3>
+                    <p>用户欢迎页面</p>
+                    <a href="welcome.html" class="view-btn" target="_blank">查看</a>
+                </div>
+            </div>
+
+            <div class="page-card">
+                <img src="https://via.placeholder.com/300x150/5BBFBA/FFFFFF?text=聊天-性格选择" alt="聊天-性格选择">
+                <div class="page-info">
+                    <h3>聊天-性格选择</h3>
+                    <p>第一步：选择性格类型</p>
+                    <a href="chat_personality.html" class="view-btn" target="_blank">查看</a>
+                </div>
+            </div>
+
+            <div class="page-card">
+                <img src="https://via.placeholder.com/300x150/5BBFBA/FFFFFF?text=聊天-情绪选择" alt="聊天-情绪选择">
+                <div class="page-info">
+                    <h3>聊天-情绪选择</h3>
+                    <p>第二步：选择当前情绪</p>
+                    <a href="chat_emotion.html" class="view-btn" target="_blank">查看</a>
+                </div>
+            </div>
+
+            <div class="page-card">
+                <img src="https://via.placeholder.com/300x150/5BBFBA/FFFFFF?text=聊天-推荐页" alt="聊天-推荐页">
+                <div class="page-info">
+                    <h3>聊天-推荐页</h3>
+                    <p>基于用户画像的旅行推荐</p>
+                    <a href="chat_recommendations.html" class="view-btn" target="_blank">查看</a>
+                </div>
+            </div>
+
+            <div class="page-card">
+                <img src="https://via.placeholder.com/300x150/5BBFBA/FFFFFF?text=行程详情" alt="行程详情">
+                <div class="page-info">
+                    <h3>行程详情</h3>
+                    <p>时间轴式行程安排</p>
+                    <a href="itinerary.html" class="view-btn" target="_blank">查看</a>
+                </div>
+            </div>
+
+            <div class="page-card">
+                <img src="https://via.placeholder.com/300x150/5BBFBA/FFFFFF?text=档案页面" alt="档案页面">
+                <div class="page-info">
+                    <h3>档案页面</h3>
+                    <p>已保存的旅行计划</p>
+                    <a href="archives.html" class="view-btn" target="_blank">查看</a>
+                </div>
+            </div>
+
+            <div class="page-card">
+                <img src="https://via.placeholder.com/300x150/5BBFBA/FFFFFF?text=愿景板" alt="愿景板">
+                <div class="page-info">
+                    <h3>愿景板</h3>
+                    <p>收集旅行灵感</p>
+                    <a href="vision_board.html" class="view-btn" target="_blank">查看</a>
                 </div>
             </div>
         </div>
 
-        <!-- 聊天屏幕 -->
-        <div class="screen hidden" id="chat-screen">
-            <div class="header">
-                <h2>WanderPal</h2>
-            </div>
-            <div class="chat-container" id="chat-messages">
-                <div class="message agent-message">
-                    <div class="message-bubble">
-                        <p>我很乐意帮您规划一段符合您心情的旅程。可以问您几个问题吗？</p>
-                    </div>
-                </div>
-                <div class="message agent-message">
-                    <div class="message-bubble">
-                        <p>您如何描述自己的性格？</p>
-                    </div>
-                </div>
-                <div class="quick-replies">
-                    <button class="quick-reply" onclick="selectPersonality('introverted')">内向型</button>
-                    <button class="quick-reply" onclick="selectPersonality('extroverted')">外向型</button>
-                    <button class="quick-reply" onclick="selectPersonality('explorer')">探索者</button>
-                    <button class="quick-reply" onclick="selectPersonality('comfort')">安逸型</button>
-                </div>
-            </div>
-            <div class="chat-input">
-                <input type="text" placeholder="输入您的回复...">
-                <button class="send-button">发送</button>
-            </div>
-            <div class="bottom-nav">
-                <button class="nav-btn" onclick="showScreen('welcome-screen')">🏠</button>
-                <button class="nav-btn active">💬</button>
-                <button class="nav-btn" onclick="showScreen('archives-screen')">📁</button>
-            </div>
-        </div>
-
-        <!-- 档案屏幕 -->
-        <div class="screen hidden" id="archives-screen">
-            <div class="header">
-                <h2>档案</h2>
-            </div>
-            <div class="archives-container">
-                <h3>您的已保存旅程</h3>
-                <div class="archive-cards">
-                    <div class="archive-card" onclick="showScreen('itinerary-screen')">
-                        <div class="card-image"
-                            style="background-image: url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')">
-                        </div>
-                        <div class="card-info">
-                            <h4>日本京都</h4>
-                            <p>2023年5月15-22日</p>
-                            <span class="tag">#文化休闲</span>
-                        </div>
-                    </div>
-                    <div class="archive-card">
-                        <div class="card-image"
-                            style="background-image: url('https://images.unsplash.com/photo-1528819622765-d6bcf132f793?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')">
-                        </div>
-                        <div class="card-info">
-                            <h4>哥斯达黎加</h4>
-                            <p>2023年12月1-10日</p>
-                            <span class="tag">#自然逃离</span>
-                        </div>
-                    </div>
-                    <div class="archive-card">
-                        <div class="card-image"
-                            style="background-image: url('https://images.unsplash.com/photo-1539037116277-4db20889f2d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')">
-                        </div>
-                        <div class="card-info">
-                            <h4>西班牙巴塞罗那</h4>
-                            <p>2024年3月5-12日</p>
-                            <span class="tag">#城市冒险</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="bottom-nav">
-                <button class="nav-btn" onclick="showScreen('welcome-screen')">🏠</button>
-                <button class="nav-btn" onclick="showScreen('chat-screen')">💬</button>
-                <button class="nav-btn active">📁</button>
-            </div>
-        </div>
-
-        <!-- 行程屏幕 -->
-        <div class="screen hidden" id="itinerary-screen">
-            <div class="header">
-                <button class="back-button" onclick="showScreen('archives-screen')">←</button>
-                <h2>京都之旅</h2>
-            </div>
-            <div class="itinerary-container">
-                <h3>第1天</h3>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <h4>上午</h4>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="attraction">
-                                <div class="attraction-image"
-                                    style="background-image: url('https://images.unsplash.com/photo-1584873603760-e7ef641e5fcc?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')">
-                                </div>
-                                <div class="attraction-info">
-                                    <h5>岚山竹林</h5>
-                                    <p>🚶‍♂️ 2小时 | $</p>
-                                    <p>日本最著名的竹林小径，感受宁静氛围</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <h4>下午</h4>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="attraction">
-                                <div class="attraction-image"
-                                    style="background-image: url('https://images.unsplash.com/photo-1583080496414-7c90210d5218?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60')">
-                                </div>
-                                <div class="attraction-info">
-                                    <h5>天龙寺</h5>
-                                    <p>🚌 从竹林30分钟 | $$</p>
-                                    <p>世界遗产，拥有美丽的日式庭院</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="map-container">
-                    <h4>今日路线</h4>
-                    <div class="map">
-                        <img src="https://maps.googleapis.com/maps/api/staticmap?center=Arashiyama,Kyoto&zoom=14&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:A%7C35.0169,135.6745&markers=color:red%7Clabel:B%7C35.0170,135.6682&path=color:0x5BBFBA%7Cweight:5%7C35.0169,135.6745%7C35.0170,135.6682&key=YOUR_API_KEY"
-                            alt="地图路线">
-                    </div>
-                </div>
-                <div class="feedback-buttons">
-                    <button class="btn btn-icon">👍</button>
-                    <button class="btn btn-icon">👎</button>
-                    <button class="btn btn-primary">保存到档案</button>
-                </div>
-            </div>
-            <div class="bottom-nav">
-                <button class="nav-btn" onclick="showScreen('welcome-screen')">🏠</button>
-                <button class="nav-btn" onclick="showScreen('chat-screen')">💬</button>
-                <button class="nav-btn active">📁</button>
-            </div>
-        </div>
+        <footer>
+            <p>WanderPal - 您的AI旅行伴侣 | 静态HTML界面展示</p>
+        </footer>
     </div>
-
-    <script src="script.js"></script>
 </body>
 
 </html>
