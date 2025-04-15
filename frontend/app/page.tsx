@@ -1,7 +1,9 @@
-import { ChatSection } from "@/components/chat";
+import ChatUI from "@/components/chatUI";
 
 export default function Home() {
   return (
-    <ChatSection />
+    <div>
+      <ChatUI />
+    </div>
   );
 }
