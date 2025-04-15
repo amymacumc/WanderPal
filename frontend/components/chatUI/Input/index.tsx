@@ -2,7 +2,8 @@
 import React from 'react';
 import { Sender, SenderProps } from '@ant-design/x';
 
-interface InputProps extends SenderProps {}
+// 直接使用SenderProps作为组件的props类型，避免空接口警告
+type InputProps = SenderProps;
 
 const Input: React.FC<InputProps> = (props) => {
     return (

@@ -32,7 +32,7 @@ const TipList = [
 ]
 
 const ChatUI: React.FC = () => {
-  const {messages, input, setInput, append, isLoading} = useMockChat(Messages);
+  const {messages, input, setInput, append} = useMockChat(Messages);
 
   return (
     <div className='bg-blue-100 p-4 flex flex-col h-screen'>

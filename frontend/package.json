@@ -12,7 +12,6 @@
     "@amap/amap-jsapi-loader": "^1.0.1",
     "@ant-design/nextjs-registry": "^1.0.2",
     "@ant-design/x": "^1.1.1",
-    "@llamaindex/chat-ui": "^0.3.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.487.0",
