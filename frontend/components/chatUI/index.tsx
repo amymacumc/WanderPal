@@ -59,14 +59,15 @@ const ChatUI: React.FC = () => {
            name="Eric旅行规划师"
            onBack={() => window.history.back()}
          />
-         <Welcome 
+        
+       </div>
+
+       <div className='flex-1 overflow-y-auto px-4'>
+       <Welcome 
            icon={'👏'} 
            title={'上午好'} 
            description={'告诉我你要去哪里,我可以帮你规划本次的旅程。你可以问我任何有关旅行的问题'}
          />
-       </div>
-
-       <div className='flex-1 overflow-y-auto px-4'>
          <div className='space-y-2 mb-4'>
            {TipList.map(tip => (
              <TipBubble 
