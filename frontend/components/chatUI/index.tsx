@@ -1,5 +1,5 @@
 "use client"
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import Input from './Input';
 import TipBubble from './TipBubble';
 import BubbleList from './BubbleList';
@@ -35,6 +35,15 @@ const TipList = [
 
 const ChatUI: React.FC = () => {
   const {messages, input, setInput, append} = useMockChat(Messages);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]); // Scroll to bottom when messages change
 
   return (
     <div className='flex flex-col h-screen bg-blue-100'>
@@ -70,6 +79,7 @@ const ChatUI: React.FC = () => {
            ))}
          </div>
          <BubbleList messages={messages} />
+         <div ref={messagesEndRef} /> {/* Invisible element to scroll to */}
        </div>
 
        <div className='flex-none p-4'>
