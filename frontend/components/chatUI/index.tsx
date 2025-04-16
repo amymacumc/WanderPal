@@ -3,6 +3,8 @@ import React from 'react';
 import Input from './Input';
 import TipBubble from './TipBubble';
 import BubbleList from './BubbleList';
+import Welcome from './Welcome';
+import Header from './Header';
 import { useMockChat } from './logic/useMockChat';
 
 let currentId = 4;
@@ -35,21 +37,53 @@ const ChatUI: React.FC = () => {
   const {messages, input, setInput, append} = useMockChat(Messages);
 
   return (
-    <div className='bg-blue-100 p-4 flex flex-col h-screen'>
-    <div className='flex-1'>
-      {TipList.map(tip => <TipBubble onClick={() => {
-        append({id: currentId++, content: tip, role:'user' })
-      }} key={tip} content={tip}></TipBubble>)}
-      <BubbleList messages={messages} />
-    </div>
-    <div className='flex-end justify-self-end'>
-        <Input value={input} onChange={setInput} onSubmit={(message) => {
-          append({id: currentId++, content: message, role:'user' })
-          setInput('');
-        }} />
-    </div>
+    <div className='flex flex-col h-screen bg-blue-100'>
+       <div className='flex-none'>
+         <Header 
+           avatar={
+               <img 
+                   src="https://cataas.com/cat" 
+                   alt="AI Assistant" 
+                   className="w-full h-full object-cover"
+               />
+           }
+           name="Eric旅行规划师"
+           onBack={() => window.history.back()}
+         />
+         <Welcome 
+           icon={'👏'} 
+           title={'上午好'} 
+           description={'告诉我你要去哪里,我可以帮你规划本次的旅程。你可以问我任何有关旅行的问题'}
+         />
+       </div>
+
+       <div className='flex-1 overflow-y-auto px-4'>
+         <div className='space-y-2 mb-4'>
+           {TipList.map(tip => (
+             <TipBubble 
+               onClick={() => {
+                 append({id: currentId++, content: tip, role:'user' })
+               }} 
+               key={tip} 
+               content={tip}
+             />
+           ))}
+         </div>
+         <BubbleList messages={messages} />
+       </div>
+
+       <div className='flex-none p-4'>
+         <Input 
+           value={input} 
+           onChange={setInput} 
+           onSubmit={(message) => {
+             append({id: currentId++, content: message, role:'user' })
+             setInput('');
+           }} 
+         />
+       </div>
     </div>
   );
-
 } 
-  export default ChatUI;
+
+export default ChatUI;
