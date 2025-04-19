@@ -1,0 +1,8 @@
+curl -X POST http://localhost:8000/chat \
+  -H "Content-Type: application/json; charset=utf-8" \
+  --data-binary '{"username": "alice", "message": "你好"}'
+
+###
+curl -X POST http://localhost:8000/history \
+  -H "Content-Type: application/json; charset=utf-8" \
+  --data-binary '{"username": "alice"}'
