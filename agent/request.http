@@ -1,7 +1,7 @@
 ### 创建用户
-curl -X POST "http://localhost:8000/user/create" \
--H "Content-Type: application/json" \
--d '{
+curl -i -X POST "http://localhost:8000/user/create" \
+  -H "Content-Type: application/json" \
+  -d '{
     "name": "张三",
     "gender": "男",
     "age": 25,
@@ -9,133 +9,20 @@ curl -X POST "http://localhost:8000/user/create" \
     "mbti": "INTJ"
 }'
 
-# HTTP/1.1 200 OK
-# date: Sat, 19 Apr 2025 12:22:32 GMT
-# server: uvicorn
-# content-length: 171
-# content-type: application/json
-# Connection: close
-
-# {
-#   "code": 0,
-#   "message": "Success",
-#   "data": {
-#     "user": {
-#       "user_id": "60265936-2869-496b-beac-a7fea0629370",
-#       "name": "张三",
-#       "gender": "男",
-#       "age": 25,
-#       "location": "上海",
-#       "mbti": "INTJ"
-#     }
-#   }
-# }
 
 ### 查询用户
-curl -X GET  "http://localhost:8000/user/f334301d-5cdd-4b48-b28f-02d78cfd3f08"
-# HTTP/1.1 200 OK
-# date: Sat, 19 Apr 2025 12:22:52 GMT
-# server: uvicorn
-# content-length: 171
-# content-type: application/json
-# Connection: close
+curl -X GET "http://localhost:8000/user" \
+  -b "user_id=31da6380-48a1-412b-9f3e-bde123c4733f"
 
-# {
-#   "code": 0,
-#   "message": "Success",
-#   "data": {
-#     "user": {
-#       "user_id": "f334301d-5cdd-4b48-b28f-02d78cfd3f08",
-#       "name": "张三",
-#       "gender": "男",
-#       "age": 25,
-#       "location": "上海",
-#       "mbti": "INTJ"
-#     }
-#   }
-# }
 
-###
+### 历史记录
 curl -X POST http://localhost:8000/history \
+  -b "user_id=31da6380-48a1-412b-9f3e-bde123c4733f" \
   -H "Content-Type: application/json; charset=utf-8" \
   --data-binary '{"user_id": "f334301d-5cdd-4b48-b28f-02d78cfd3f08"}'
 
-
-# "history": [
-#   {
-#     "role": "assistant/user",
-#     "type": "message/plan"
-#     "content": "str/{
-#         "travel_plan_id": str
-#         "title": str,
-#         "daily_plans":[
-#            {
-#               daily_plan_id: str,
-#               activities:[
-#                 {
-#                   activity_id: str,
-#                   location_name: str,
-#                   location_coordinates: [经度，维度]，
-#                 }
-#               ]
-#            }
-#         ]
-#       }"
-#   },
-# ]
-
-
-# HTTP/1.1 200 OK
-# date: Sat, 19 Apr 2025 12:23:15 GMT
-# server: uvicorn
-# content-length: 598
-# content-type: application/json
-# Connection: close
-
-# {
-#   "code": 0,
-#   "message": "Success",
-#   "data": {
-#     "history": [
-#       {
-#         "role": "assistant",
-#         "content": "早上好，我是您的私人旅行管家WanderPal。欢迎回来！请告诉我您今天的出行需求——无论是详细的交通安排还是精准的费用规划，我都将为您精心设计一份高效且贴心的旅行计划。"
-#       },
-#       {
-#         "role": "user",
-#         "content": "你好"
-#       },
-#       {
-#         "role": "assistant",
-#         "content": "你好！很高兴能和你聊旅行的事。首先，我想了解一下你计划的出行时间，您有没有特别的日期或天数安排呢？这样我可以更好地帮助您安排接下来的行程。"
-#       }
-#     ]
-#   }
-# }
-
-###
+### 发送消息
 curl -X POST http://localhost:8000/chat \
+  -b "user_id=31da6380-48a1-412b-9f3e-bde123c4733f" \
   -H "Content-Type: application/json; charset=utf-8" \
-  --data-binary '{"user_id": "f334301d-5cdd-4b48-b28f-02d78cfd3f08", "message": "你好"}'
-
-#   {
-#     "role": "assistant/user",
-#     "type": "message/chunk/card"
-#     "content": "str/str/{
-#         "travel_plan_id": str
-#         "title": str,
-#         "daily_plans":[
-#            {
-#               daily_plan_id: str,
-#               activities:[
-#                 {
-#                   activity_id: str,
-#                   location_name: str,
-#                   location_coordinates: [经度，维度]，
-#                 }
-#               ]
-#            }
-#         ]
-#       }"
-#   },
-
+  --data-binary '{"message": "你好"}'

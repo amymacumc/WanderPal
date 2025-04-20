@@ -1,4 +1,4 @@
-from .user_info import UserInfo
+from models.user_info import UserInfo
 
 def build_extraction_prompt(user_input, agent_input):
     return f"""

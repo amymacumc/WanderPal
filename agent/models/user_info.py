@@ -1,4 +1,5 @@
 from __future__ import annotations
+from typing import List
 from pydantic import BaseModel
 
 class UserInfo(BaseModel):
@@ -28,3 +29,12 @@ class UserInfo(BaseModel):
             new_val = getattr(user_info, field)
             if not current_val and new_val:
                 setattr(self, field, new_val)
+
+
+
+class RecommendTravel(BaseModel):
+    name: str
+    dailyPlan: List[List[str]]
+
+class RecommendTravels(BaseModel):
+    recommend_travels: List[RecommendTravel]

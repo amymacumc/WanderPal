@@ -4,7 +4,7 @@ import asyncio
 from autogen_agentchat.agents import AssistantAgent
 from autogen_agentchat.ui import Console
 from autogen_ext.models.openai import OpenAIChatCompletionClient
-from .user_info import UserInfo
+from models.user_info import UserInfo
 from .prompt_utils import build_extraction_prompt, build_greet_prompt, build_question_prompt, build_question_system
 from autogen_core.models import UserMessage
 from autogen_agentchat.base import TaskResult
