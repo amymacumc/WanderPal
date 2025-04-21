@@ -9,7 +9,7 @@ export default function Home() {
     const router = useRouter();
 
     const handleStartChat = () => {
-        router.push('/chat');
+        router.push('/conversation');
     };
 
     return (

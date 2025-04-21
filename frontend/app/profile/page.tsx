@@ -2,11 +2,14 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { User } from '@/types/user';
+import { createUser } from '@/utils/api';
 
 const ProfilePage = () => {
   const router = useRouter();
+  const [error, setError] = useState<string>('');
   const [formData, setFormData] = useState({
-    nickname: '',
+    name: '',
     gender: '',
     age: '',
     location: '',
@@ -27,14 +30,31 @@ const ProfilePage = () => {
     '苏州', '天津', '长沙', '郑州', '青岛',
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Save profile data
-    router.push('/'); // Navigate to dashboard after submission
+    setError('');
+
+    try {
+      const userData: User = {
+        ...formData
+      };
+
+      const response = await createUser(userData);
+      
+      if (response.code === 0) {
+        // Successfully created user, redirect to plan page
+        router.push('/');
+      } else {
+        setError(response.message || '创建用户失败，请重试');
+      }
+    } catch (err) {
+      setError('创建用户失败，请重试');
+      console.error('Error creating user:', err);
+    }
   };
 
   const handleSkip = () => {
-    router.push('/');
+    router.push('/plan');
   };
 
   return (
@@ -45,14 +65,20 @@ const ProfilePage = () => {
           <p className="text-gray-600">为帮助我们定制专属你的行程计划，请填写以下信息</p>
         </div>
 
+        {error && (
+          <div className="mb-4 p-3 bg-red-50 text-red-700 rounded-lg">
+            {error}
+          </div>
+        )}
+
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Nickname */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">昵称</label>
             <input
               type="text"
-              value={formData.nickname}
-              onChange={(e) => setFormData({ ...formData, nickname: e.target.value })}
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               placeholder="Summer"
             />

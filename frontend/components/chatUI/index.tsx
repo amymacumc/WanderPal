@@ -5,7 +5,7 @@ import TipBubble from './TipBubble';
 import BubbleList from './BubbleList';
 import Welcome from './Welcome';
 import Header from './Header';
-import { useMockChat } from './logic/useMockChat';
+import { useChat } from './logic/useChat';
 
 let currentId = 4;
 
@@ -34,7 +34,7 @@ const TipList = [
 ]
 
 const ChatUI: React.FC = () => {
-  const {messages, input, setInput, append} = useMockChat(Messages);
+  const {messages, input, setInput, append} = useChat(Messages);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
