@@ -1,37 +1,59 @@
 'use client'
-import React, { useState } from 'react';
-import OverviewCard from '@/components/overviewCard';
-import Tabs from '@/components/tabs';
+import React from 'react';
+import PlanOverview from '@/components/PlanOverview';
+import { DailyPlan } from '@/types/user';
 
-const getOverview = (length: number) => {
-    const overview = [];
-    for (let i = 0; i < length; i++) {
-        overview.push({
-            location: ['成都国际机场', '银座', '秋叶原'],
-            title: `Day${i + 1}`,
-        });
+const plan: DailyPlan[] = [
+    {
+        id: "day1",
+        activities: [
+            {
+                id: "activity1",
+                name: "故宫博物院",
+                coordinates: {
+                    latitude: 39.90923,
+                    longitude: 116.397428
+                },
+                description: "中国明清两代的皇家宫殿，世界上现存规模最大、保存最为完整的木质结构古建筑之一。"
+            },
+            {
+                id: "activity2",
+                name: "颐和园",
+                coordinates: {
+                    latitude: 39.91923,
+                    longitude: 116.407428
+                },
+                description: "中国清朝时期的皇家园林，被誉为\"皇家园林博物馆\"。"
+            }
+        ]
+    },
+    {
+        id: "day2",
+        activities: [
+            {
+                id: "activity3",
+                name: "长城",
+                coordinates: {
+                    latitude: 39.90923,
+                    longitude: 116.417428
+                },
+                description: "世界上最伟大的建筑工程之一，也是中国古代军事防御工程。"
+            },
+            {
+                id: "activity4",
+                name: "天坛",
+                coordinates: {
+                    latitude: 39.91923,
+                    longitude: 116.427428
+                },
+                description: "中国古代皇帝祭天的场所，是中国现存最大的古代祭祀建筑群。"
+            }
+        ]
     }
-    return overview;
-}
+]
 
 export default function TravelPage() {
-    const overview = getOverview(5);
-    const [activeTab, setActiveTab] = useState('概览');
     return (
-        <div className="flex flex-col gap-4 p-4">
-            <h1>Travel Page</h1>
-            <Tabs 
-                tabs={['概览', 'Day1', 'Day2', 'Day3', 'Day4', 'Day5']}
-                activeTab={activeTab}
-                onChange={(tab) => {setActiveTab(tab)}}
-            />
-            {overview.map((item) => (
-            <OverviewCard 
-                key={item.title}
-                location={['成都国际机场', '银座', '秋叶原']}
-                onClick={() => {}}
-                title="Day1"
-            />))}
-        </div>
+        <PlanOverview title="北京两日历史之旅" daily_plans={plan} cost={1000} />
     );
 }

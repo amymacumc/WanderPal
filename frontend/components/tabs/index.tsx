@@ -19,7 +19,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs, activeTab, onChange, className }) => 
                         "px-4 py-2 rounded-full whitespace-nowrap transition-colors",
                         "text-sm font-medium",
                         activeTab === tab
-                            ? "bg-black text-white"
+                            ? "border border-title"
                             : "bg-white text-gray-600 border border-gray-200 hover:bg-gray-50"
                     )}
                 >
