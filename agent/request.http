@@ -1,0 +1,28 @@
+### 创建用户
+curl -i -X POST "http://localhost:8000/user/create" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "张三",
+    "gender": "男",
+    "age": 25,
+    "location": "上海",
+    "mbti": "INTJ"
+}'
+
+
+### 查询用户
+curl -X GET "http://localhost:8000/user" \
+  -b "user_id=31da6380-48a1-412b-9f3e-bde123c4733f"
+
+
+### 历史记录
+curl -X POST http://localhost:8000/history \
+  -b "user_id=31da6380-48a1-412b-9f3e-bde123c4733f" \
+  -H "Content-Type: application/json; charset=utf-8" \
+  --data-binary '{"user_id": "f334301d-5cdd-4b48-b28f-02d78cfd3f08"}'
+
+### 发送消息
+curl -X POST http://localhost:8000/chat \
+  -b "user_id=31da6380-48a1-412b-9f3e-bde123c4733f" \
+  -H "Content-Type: application/json; charset=utf-8" \
+  --data-binary '{"message": "你好"}'
