@@ -1,6 +1,7 @@
 import asyncio
 import json
 import os
+from uuid import uuid4
 import uvicorn
 from fastapi import Depends, FastAPI, HTTPException, Request, Response
 from fastapi.responses import StreamingResponse, JSONResponse
@@ -17,9 +18,10 @@ app = FastAPI()
 API_KEY = os.getenv("API_KEY")
 MODEL = os.getenv("MODEL")
 
+user_agents = {}
 users = {} 
 chat_history = {}
-user_agents = {}
+tarvels = {}
 
 def response_success(message="Success", code=0, data=None):
     return {
@@ -99,17 +101,28 @@ async def chat(request: Request):
         try:
             agent = user_agents[user_id]
             reply = await agent.send(message)
-            while reply:
-                full_reply += reply
-                yield json.dumps(response_success(data={"role": "assistant", "type": "chunk", "content": reply}), ensure_ascii=False) + "\n"
-                await asyncio.sleep(0)
-                reply = await agent.send("")
-                if reply == None:
-                    break
-                elif isinstance(reply, UserInfo):
-                    yield json.dumps(response_success(data={"role": "assistant", "type": "message", "content": "感谢您提供的信息！我们已经整理好了您的资料，现在正在为您精心设计一个专属的旅行计划。请稍等片刻，我们会根据您的兴趣和需求，推荐一条完美的旅行路线！"}), ensure_ascii=False) + "\n"
-                    
+            if isinstance(reply, UserInfo):
+                yield json.dumps(response_success(data={"role": "assistant", "type": "message", "content": "感谢您提供的信息！我们已经整理好了您的资料，现在正在为您精心设计一个专属的旅行计划。请稍等片刻，我们会根据您的兴趣和需求，推荐一条完美的旅行路线！"}), ensure_ascii=False) + "\n"
+                recommend_agent= RecommendTravelAgent(API_KEY, MODEL)
+                recommend_travels = await recommend_agent.recommend(user_info=reply)
+                for travel in recommend_travels.recommend_travels:
+                    travel.id = str(uuid4())
+                    tarvels[travel.id] = travel
+                yield json.dumps(response_success(data={"role": "assistant", "type": "plan", "content": recommend_travels.dict()}), ensure_ascii=False) + "\n"
 
+                recommend_agent.close()
+                if user_id in user_agents:
+                    user_agents[user_id].close()
+                    del user_agents[user_id]
+            else:
+                while reply:
+                    full_reply += reply
+                    yield json.dumps(response_success(data={"role": "assistant", "type": "chunk", "content": reply}), ensure_ascii=False) + "\n"
+                    await asyncio.sleep(0)
+                    reply = await agent.send("")
+                    if reply == None:
+                        break
+                print('reply', full_reply)
         except Exception as e:
             yield json.dumps(response_error(f"Streaming error: {str(e)}")) + "\n"
 
@@ -131,7 +144,12 @@ async def main():
         other="不想安排太紧凑，最好有时间喝咖啡逛小店"
     )
 
-    await agent.recommend(user_info=user_info)
+    recommend_travels = await agent.recommend(user_info=user_info)
+    for travel in recommend_travels.recommend_travels:
+        travel.id = str(uuid4())
+
+    res = json.dumps(response_success(data={"role": "assistant", "type": "plan", "content": recommend_travels.dict()}), ensure_ascii=False) + "\n"
+    print(res)
 
 
 # # 启动主函数

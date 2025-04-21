@@ -14,7 +14,8 @@ def build_recommend_system() -> str:
       ["景点1", "景点2", "景点3"],
       ["景点4", "景点5"],
       ...
-    ]
+    ],
+     "estimatedBudget": "参考预算（如：3000元左右）"
   },
   ...
 ]
@@ -24,6 +25,7 @@ def build_recommend_system() -> str:
 - 严禁输出**抽象活动**或模糊描述（如：“喝茶放松”、“小店休息”、“午餐后散步”、“随意游览”等）。
 - dailyPlan 的天数必须严格等于用户的 available_time 推算出的旅行天数（如 4 天时间则 dailyPlan 必须为 4 个子数组）。
 - 每天的 dailyPlan 为一个字符串数组，表示该日推荐的景点列表。
+- estimatedBudget 字段必须包含一个大致金额或范围（单位为人民币），用于给出预算参考。
 - 输出结构必须严格符合上述 JSON 格式，保持嵌套结构清晰。
 
 风格要求：
@@ -50,7 +52,8 @@ def build_recommend_prompt(user_info: UserInfo) -> str:
     "dailyPlan": [
       ["故宫", "景山公园", "什刹海"],
       ....
-    ]
+    ],
+    "estimatedBudget": "2000~2500元"
   }
 ]
 """
@@ -61,6 +64,7 @@ def build_recommend_prompt(user_info: UserInfo) -> str:
 每个方案包含：
 - 一个名称（如：自然探索游）
 - 一个 dailyPlan，每天列出 2~4 个**具体景点名称**
+- 一个 estimatedBudget 字段，给出整个行程的参考预算（如：“3000元左右”、“2000~2500元”）
 - **dailyPlan数组的长度必须根据用户的可用时间确定**（例如用户可用三天，dailyPlan 应该包含三个 item）。
 
 用户信息：
@@ -76,8 +80,9 @@ def build_recommend_prompt(user_info: UserInfo) -> str:
 1. 每日行程必须列出**明确可定位的景点或地标名称**（如：宽窄巷子、青城山、博物馆等）。
 2. **不要出现任何抽象活动或模糊描述**（如：喝茶放松、午餐后散步、小店休息、感受生活等）。
 3. **dailyPlan 的天数必须与用户的可用时间一致**。例如，用户可用 4 天，则 dailyPlan 必须包含 4 天的景点安排。
-4. 所有输出必须为 JSON 格式，结构和示例保持一致。
-5. 生成2-4个对应的方案，不准只生成1个方案。
+4. **每个推荐方案必须包含 estimatedBudget 字段，说明参考预算范围，单位为人民币（元）**。
+5. 所有输出必须为 JSON 格式，结构和示例保持一致。
+6. 生成2-4个对应的方案，不准只生成1个方案。
 
 示例输出格式：
 {example}

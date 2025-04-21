@@ -25,4 +25,42 @@ curl -X POST http://localhost:8000/history \
 curl -X POST http://localhost:8000/chat \
   -b "user_id=31da6380-48a1-412b-9f3e-bde123c4733f" \
   -H "Content-Type: application/json; charset=utf-8" \
-  --data-binary '{"message": "你好"}'
+  --data-binary '{"message": "我想去东京"}'
+
+### 发送消息
+curl -X POST http://localhost:8000/chat \
+  -b "user_id=31da6380-48a1-412b-9f3e-bde123c4733f" \
+  -H "Content-Type: application/json; charset=utf-8" \
+  --data-binary '{"message": "5月1日-5月4日"}'
+
+### 发送消息
+curl -X POST http://localhost:8000/chat \
+  -b "user_id=31da6380-48a1-412b-9f3e-bde123c4733f" \
+  -H "Content-Type: application/json; charset=utf-8" \
+  --data-binary '{"message": "1W人民币"}'
+
+
+### 发送消息
+curl -X POST http://localhost:8000/chat \
+  -b "user_id=31da6380-48a1-412b-9f3e-bde123c4733f" \
+  -H "Content-Type: application/json; charset=utf-8" \
+  --data-binary '{"message": "美食"}'
+
+
+### 发送消息
+curl -X POST http://localhost:8000/chat \
+  -b "user_id=31da6380-48a1-412b-9f3e-bde123c4733f" \
+  -H "Content-Type: application/json; charset=utf-8" \
+  --data-binary '{"message": "佛系"}'
+
+### 发送消息
+curl -X POST http://localhost:8000/chat \
+  -b "user_id=31da6380-48a1-412b-9f3e-bde123c4733f" \
+  -H "Content-Type: application/json; charset=utf-8" \
+  --data-binary '{"message": "放松"}'
+
+### 发送消息
+curl -X POST http://localhost:8000/chat \
+  -b "user_id=31da6380-48a1-412b-9f3e-bde123c4733f" \
+  -H "Content-Type: application/json; charset=utf-8" \
+  --data-binary '{"message": "暂时没有"}'
