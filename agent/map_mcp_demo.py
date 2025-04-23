@@ -1,10 +1,12 @@
 import asyncio
+import json
 from autogen_agentchat.agents import AssistantAgent
 from autogen_agentchat.ui import Console
 from autogen_ext.models.openai import OpenAIChatCompletionClient
-from autogen_ext.tools.mcp import StdioServerParams, mcp_server_tools
-from travel_plan.prompt_utils import build_mcp_prompt
+from autogen_ext.tools.mcp import StdioServerParams, mcp_server_tools, SseServerParams, SseMcpToolAdapter
+from travel_plan.prompt_utils import build_travel_plan_prompt
 from model_output.daily_plan import DailyPlans
+from autogen_core.models import UserMessage
 
 async def main() -> None:
     plan = [
@@ -13,11 +15,9 @@ async def main() -> None:
         ["黄龙溪古镇", "文殊院"]
     ]
 
-    user_input = build_mcp_prompt(plan)
     model_client = OpenAIChatCompletionClient(
-        base_url="https://api.siliconflow.cn/v1",
         api_key="",
-        model="Qwen/Qwen2.5-72B-Instruct-128K",
+        model="gpt-4o-mini",
         model_info={
             "vision": False,
             "function_calling": True,
@@ -28,32 +28,36 @@ async def main() -> None:
         timeout=1000
     )
 
-    fetch_mcp_server = StdioServerParams(
-        command="npx",
-        args=["-y", "@amap/amap-maps-mcp-server"],
-        env={
-            "AMAP_MAPS_API_KEY": "78ff14f1339197bf2657158ffe706377"
-        }
+
+    server_params = SseServerParams(
+        url="https://mcp.amap.com/sse?key=",
+        headers={"Content-Type": "application/json"},
+        timeout=30,  # Connection timeout in seconds
     )
 
-    tools = await mcp_server_tools(fetch_mcp_server)
+    tools = await mcp_server_tools(server_params)
 
-    # 构建地图 Agent
+
+    # extract_response = await model_client.create(
+    #     [UserMessage(content=build_travel_plan_prompt(plan), source="user")],
+    #     tools=tools,
+    #     json_output=DailyPlans
+    # )
+
+    # print(extract_response)
+
     agent = AssistantAgent(
         name="amap_assistant",
         model_client=model_client,
         tools=tools,
-        system_message="""You are a helpful map assistant powered by AMap. You can:
-        1. Search places (POI) in cities
-        2. Plan routes from A to B
-        3. Do geocoding and reverse geocoding
-        """,
         reflect_on_tool_use=True,
-        model_client_stream=True,
-        # output_content_type=DailyPlans,
+        model_client_stream=True,   
     )
     
-    await Console(agent.run_stream(task=build_mcp_prompt(plan)))
+    result = await agent.run(task=build_travel_plan_prompt(plan))
+    print(result.messages[-1].content)
+    output_json = json.loads(result.messages[-1].content)  
+    print(output_json)
         
     await model_client.close()
 

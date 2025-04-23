@@ -38,3 +38,4 @@ class RecommendTravelAgent:
     async def recommend(self, user_info: UserInfo):
         result = await self.recommend_agent.run(task=build_recommend_prompt(user_info))
         return result.messages[-1].content
+

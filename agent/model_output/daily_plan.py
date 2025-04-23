@@ -11,5 +11,9 @@ class DailyPlan(BaseModel):
     longitude: float
 
 class DailyPlans(BaseModel):
+    id: str
+    title: str
     daily_plans: List[DailyPlan]
+    reminder: List[str]
+
 

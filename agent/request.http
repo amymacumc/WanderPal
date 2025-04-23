@@ -12,55 +12,74 @@ curl -i -X POST "http://localhost:8000/user/create" \
 
 ### 查询用户
 curl -X GET "http://localhost:8000/user" \
-  -b "user_id=31da6380-48a1-412b-9f3e-bde123c4733f"
+  -b "user_id=186a1df9-e72e-4a7d-b183-c82014a75e71"
 
 
 ### 历史记录
 curl -X POST http://localhost:8000/history \
-  -b "user_id=31da6380-48a1-412b-9f3e-bde123c4733f" \
+  -b "user_id=186a1df9-e72e-4a7d-b183-c82014a75e71" \
   -H "Content-Type: application/json; charset=utf-8" \
   --data-binary '{"user_id": "f334301d-5cdd-4b48-b28f-02d78cfd3f08"}'
 
 ### 发送消息
 curl -X POST http://localhost:8000/chat \
-  -b "user_id=31da6380-48a1-412b-9f3e-bde123c4733f" \
+  -b "user_id=186a1df9-e72e-4a7d-b183-c82014a75e71" \
   -H "Content-Type: application/json; charset=utf-8" \
   --data-binary '{"message": "我想去东京"}'
 
 ### 发送消息
 curl -X POST http://localhost:8000/chat \
-  -b "user_id=31da6380-48a1-412b-9f3e-bde123c4733f" \
+  -b "user_id=186a1df9-e72e-4a7d-b183-c82014a75e71" \
   -H "Content-Type: application/json; charset=utf-8" \
   --data-binary '{"message": "5月1日-5月4日"}'
 
 ### 发送消息
 curl -X POST http://localhost:8000/chat \
-  -b "user_id=31da6380-48a1-412b-9f3e-bde123c4733f" \
+  -b "user_id=186a1df9-e72e-4a7d-b183-c82014a75e71" \
   -H "Content-Type: application/json; charset=utf-8" \
   --data-binary '{"message": "1W人民币"}'
 
 
 ### 发送消息
 curl -X POST http://localhost:8000/chat \
-  -b "user_id=31da6380-48a1-412b-9f3e-bde123c4733f" \
+  -b "user_id=186a1df9-e72e-4a7d-b183-c82014a75e71" \
   -H "Content-Type: application/json; charset=utf-8" \
   --data-binary '{"message": "美食"}'
 
 
 ### 发送消息
 curl -X POST http://localhost:8000/chat \
-  -b "user_id=31da6380-48a1-412b-9f3e-bde123c4733f" \
+  -b "user_id=186a1df9-e72e-4a7d-b183-c82014a75e71" \
   -H "Content-Type: application/json; charset=utf-8" \
   --data-binary '{"message": "佛系"}'
 
 ### 发送消息
 curl -X POST http://localhost:8000/chat \
-  -b "user_id=31da6380-48a1-412b-9f3e-bde123c4733f" \
+  -b "user_id=186a1df9-e72e-4a7d-b183-c82014a75e71" \
   -H "Content-Type: application/json; charset=utf-8" \
   --data-binary '{"message": "放松"}'
 
 ### 发送消息
 curl -X POST http://localhost:8000/chat \
-  -b "user_id=31da6380-48a1-412b-9f3e-bde123c4733f" \
+  -b "user_id=186a1df9-e72e-4a7d-b183-c82014a75e71" \
   -H "Content-Type: application/json; charset=utf-8" \
-  --data-binary '{"message": "暂时没有"}'
+  --data-binary '{"message": "暂时没有其他要求"}'
+
+### 查看详情
+curl -X POST http://localhost:8000/plan/detail \
+  -b "user_id=186a1df9-e72e-4a7d-b183-c82014a75e71" \
+  -H "Content-Type: application/json; charset=utf-8" \
+  --data-binary '{"travel_plan_id": "5791b08f-ec23-427d-8c96-aeef63676358"}'
+
+
+
+### 保存计划
+curl -X POST http://localhost:8000/plan/save \
+  -b "user_id=186a1df9-e72e-4a7d-b183-c82014a75e71" \
+  -H "Content-Type: application/json; charset=utf-8" \
+  --data-binary '{"travel_plan_id": "5791b08f-ec23-427d-8c96-aeef63676358"}'
+
+### 查看档案
+curl -X POST http://localhost:8000/plan/list \
+  -b "user_id=186a1df9-e72e-4a7d-b183-c82014a75e71" \
+  -H "Content-Type: application/json; charset=utf-8" \
