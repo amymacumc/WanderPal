@@ -69,6 +69,15 @@ TBD
 
 ## 🧪 Getting Started
 
+```
+// install pnpm
+npm install -g pnpm
+// install dependencies
+pnpm install
+// make sure you have Node.js installed
+pnpm run dev
+```
+
 ---
 
 ## 🛠 Deployment
