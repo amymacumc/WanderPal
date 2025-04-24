@@ -16,12 +16,7 @@ const TipList = [
 ]
 
 const ChatUI: React.FC = () => {
-  const {messages, input, setInput, append} = useChat([{
-    id: '1',
-    role: 'assistant',
-    content: '你好，我是Eric旅行规划师，很高兴为你服务。',
-    type: 'card'
-  }]);
+  const {messages, input, setInput, append} = useChat([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {

@@ -58,3 +58,46 @@ export async function sendChatMessage(message: string): Promise<Response> {
 
   return response.json();
 } 
+
+export async function getTravelPlan(planId: string): Promise<ApiResponse<{ plan_id: string }>> {
+  const response = await fetch('/plan/detail', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({travel_plan_id: planId}),
+  })
+
+  if (!response.ok) {
+    throw new Error('Failed to get travel plan');
+  }
+
+  return response.json();
+}
+
+export async function saveTravelPlan(planId: string): Promise<ApiResponse<{}>> {
+  const response = await fetch('/plan/save', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({travel_plan_id: planId}),
+  })
+  if (!response.ok) {
+    throw new Error('Failed to save travel plan');  
+  }
+  return response.json();
+}
+
+export async function getTravelList(): Promise<ApiResponse<{ plans: string[] }>> {
+  const response = await fetch('/plan/list', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+  if (!response.ok) {
+    throw new Error('Failed to get travel plans');
+  }
+  return response.json();
+}

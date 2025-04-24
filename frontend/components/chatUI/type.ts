@@ -1,13 +1,39 @@
-import { JSX } from "react";
 
 /**
  * 消息接口定义
  */
-export interface Message {
+export type Message = baseMessage | chunkMessage | planMessage;
+/**
+ * 消息列表接口定义
+ */
+
+interface baseMessage {
     id?: string;
     role: 'user' | 'assistant';
-    type: 'chunk' | 'card' | 'message';
+    type: 'message';
     content: string;
-    // 可选的渲染函数，用于自定义消息的展示方式
-    render?: () => JSX.Element;
+}
+
+interface chunkMessage {
+    id?: string;
+    role: 'assistant';
+    type: 'chunk';
+    content: string;
+}
+
+interface planMessage {
+    id?: string;
+    role: 'assistant';
+    type: 'plan';
+    content: string;
+    plan: travelOverview[];
+}
+
+export interface travelOverview {
+    daily_plan: string[][];
+    estimated_budget: string;
+    id: string;
+    image: string;
+    location: string;
+    title: string;
 }

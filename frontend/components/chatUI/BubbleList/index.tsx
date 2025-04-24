@@ -9,10 +9,10 @@ interface BubbleListProps {
 }
 
 function renderMessage(message: Message) {
-    if (message.role === 'user') {
+    if (message.type === 'message' && message.role === 'user') {
         return <UserBubble content={message.content} />
-    } else if (message.type === 'card') {
-        return <PlanBubble planList={[planOverviewData, planOverviewData, planOverviewData]} />
+    } else if (message.type === 'plan') {
+        return <PlanBubble planList={message.plan} />
     } else {
         return <SystemBubble content={message.content} />
     }

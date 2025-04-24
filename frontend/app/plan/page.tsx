@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, PanInfo, useAnimation, useMotionValue, useTransform } from 'framer-motion';
+import { getTravelList } from '@/utils/api';
 
 interface TravelPlan {
   id: string;
@@ -46,6 +47,10 @@ const PlanPage = () => {
       image: 'https://cataas.com/cat'
     }
   ]);
+
+  useEffect(() => {
+    getTravelList();
+  })
 
   const handleDelete = (id: string) => {
     setPlans(plans.filter(plan => plan.id !== id));

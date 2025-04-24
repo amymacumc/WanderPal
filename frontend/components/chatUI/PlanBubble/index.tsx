@@ -1,11 +1,11 @@
 "use client"
 import React from 'react';
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { planOverview } from '@/types/user';
+import { Card } from '@/components/ui/card';
 import PlanOverview from '@/components/PlanOverview';
+import { travelOverview } from '../type';
 interface PlanBubbleProps {
-    planList: planOverview[];
+    planList: travelOverview[];
 }
 
 const PlanBubble: React.FC<PlanBubbleProps> = ({ planList }) => {

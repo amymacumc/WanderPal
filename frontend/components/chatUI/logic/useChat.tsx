@@ -73,26 +73,31 @@ export function useChat(initMessages: Message[]) {
                       return msg;
                     });
                   });
-                } else if (assistantMessage.type === 'card') {
+                } else if (assistantMessage.type === 'message') {
                   // For card type messages, replace the streaming message or add new
-                  streamingMessageIdRef.current = null; // Reset streaming ID
-                  
                   setMessages(prev => {
-                    // If we have a streaming message, replace it
-                    if (prev.some(msg => msg.id === responseId)) {
-                      return prev.map(msg => 
-                        msg.id === responseId ? {
-                          ...assistantMessage,
-                          id: responseId
-                        } : msg
-                      );
-                    } else {
-                      // Otherwise add as new message
+                    return prev.map(msg => {
+                      // Find the current streaming message by ID
+                      if (msg.id === streamingMessageIdRef.current) {
+                        return {
+                          ...msg,
+                          content: msg.content + assistantMessage.content
+                        };
+                      }
+                      return msg;
+                    });
+                  });
+                } else if (assistantMessage.type === 'plan') {
+                  // Handle error message
+                  streamingMessageIdRef.current = null; // Reset streaming ID
+
+                  setMessages(prev => {
                       return [...prev, {
-                        ...assistantMessage,
+                        type: 'plan',
+                        content: '',
+                        plan: assistantMessage.content.recommend_travels,
                         id: Date.now().toString()
                       }];
-                    }
                   });
                 }
               }
@@ -103,27 +108,6 @@ export function useChat(initMessages: Message[]) {
         }
       } catch (err) {
         console.error('Error in chat:', err);
-        
-        // Add error message, replacing the streaming message if it exists
-        setMessages(prev => {
-          const errorId = Date.now().toString();
-          const errorMessage = {
-            id: errorId,
-            role: 'assistant' as const,
-            type: 'card' as const,
-            content: '抱歉，发生了一些错误，请稍后重试。'
-          };
-          
-          // Replace streaming message if it exists
-          if (streamingMessageIdRef.current) {
-            return prev.map(msg => 
-              msg.id === streamingMessageIdRef.current ? errorMessage : msg
-            );
-          } else {
-            return [...prev, errorMessage];
-          }
-        });
-        
         streamingMessageIdRef.current = null;
       } finally {
         setIsLoading(false)

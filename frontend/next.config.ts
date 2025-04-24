@@ -20,6 +20,14 @@ const nextConfig: NextConfig = {
         source: '/history',
         destination: 'http://localhost:8000/history',
       },
+      {
+        source: '/plan/detail',
+        destination: 'http://localhost:8000/plan/detail'
+      },
+      {
+        source: '/plan/list',
+        destination: 'http://localhost:8000/plan/list'
+      }
     ];
   },
 };
