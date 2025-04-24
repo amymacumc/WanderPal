@@ -14,9 +14,9 @@ const OverviewCard: React.FC<OverviewCardProps> = ({ location, onClick, title })
             onClick={onClick}
         >
             <div className="flex items-center justify-between">
-                <div className="space-y-1">
-                    <div className="flex flex-col">
-                        <h3 className="text-xl font-bold text-blue-900">{title}</h3>
+                <div className="space-y-2">
+                    <div className="flex flex-col gap-2">
+                        <h3 className="text-xl font-bold color-title">{title}</h3>
                         <span className="text-gray-500 text-sm">共{location.length}个地点</span>
                     </div>
                     <p className="text-gray-600 text-sm">{location.join(' → ')}</p>

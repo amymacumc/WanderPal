@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 // Global type definition for AMap
 declare global {
@@ -33,7 +33,7 @@ const Map: React.FC<MapProps> = ({
     5: '#9370db', // Purple for Day 5
   },
 }) => {
-  console.log(routes);
+  const mapContainerRef = useRef<HTMLDivElement>(null);
     
   useEffect(() => {
     if(typeof window !== 'undefined') {
@@ -41,13 +41,12 @@ const Map: React.FC<MapProps> = ({
         window._AMapSecurityConfig = {
           securityJsCode: process.env.NEXT_PUBLIC_AMAP_SECURITY_CODE || '',
         };
-        
         AMapLoader.load({
           key: process.env.NEXT_PUBLIC_AMAP_KEY || '',
           version: '2.0',
           plugins: ['AMap.Text', 'AMap.Polyline', 'AMap.Walking', 'AMap.DragRoute'],
         }).then((AMap) => {
-          const map = new AMap.Map('map-container', {
+          const map = new AMap.Map(mapContainerRef.current, {
             viewMode: '2D',
             zoom: 13,
             zooms: [13, 13], // Lock zoom level
@@ -190,10 +189,10 @@ const Map: React.FC<MapProps> = ({
         });
       });
     }
-  }, [routes, dayColors]);
+  }, [routes]);
 
   return (
-    <div id="map-container" className="w-full h-full"></div>
+    <div ref={mapContainerRef} className="w-full h-full"></div>
   );
 };
 
