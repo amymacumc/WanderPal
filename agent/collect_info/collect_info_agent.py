@@ -12,7 +12,6 @@ from autogen_agentchat.base import TaskResult
 class CollectionInfoAgent:
     def __init__(self, api_key: str, model_name: str = "gpt-4o-mini"):
         self.model_client = OpenAIChatCompletionClient(
-            # base_url="https://api.siliconflow.cn/v1",
             model=model_name,
             api_key=api_key,
             model_info={
@@ -42,6 +41,7 @@ class CollectionInfoAgent:
 
         user_input = yield agent_input
 
+
         while True:
             if not user_input:
                 user_input = yield
@@ -55,6 +55,8 @@ class CollectionInfoAgent:
             latest_info = UserInfo.parse_raw(extract_response.content)
             user_info.update(latest_info)
 
+            print('当前收集的信息：', user_info)
+
             if user_info.is_info_complete():
                 self.close()
                 yield user_info
@@ -62,7 +64,8 @@ class CollectionInfoAgent:
                 agent_input = ''
                 async for message in self.info_agent.run_stream(task=build_question_prompt(user_input, user_info)):
                     if isinstance(message, TaskResult):
-                        yield None
+                        user_input = yield None
+                        break
                     else: 
                         if message.type == 'ModelClientStreamingChunkEvent':
                             agent_input += message.content

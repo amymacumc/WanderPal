@@ -14,3 +14,6 @@ class CollectionInfoAgentWrapper:
             return await self.generator.asend(user_input)
         except StopAsyncIteration:
             return None
+        
+    async def close(self):
+        self.agent.close()
