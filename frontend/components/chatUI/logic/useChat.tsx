@@ -27,18 +27,19 @@ export function useChat(initMessages: Message[]) {
           content: '' // Start with empty content
         }]);
 
-        const response = await fetch('/chat', {
+        const response = await fetch('http://localhost:8000/chat', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json; charset=utf-8',
           },
           body: JSON.stringify({ message: message.content }),
+          credentials: 'include'
         });
 
         if (!response.body) throw new Error('No response body');
         
         const reader = response.body.getReader();
-        const decoder = new TextDecoder();
+        const decoder = new TextDecoder('utf-8');
 
         while (true) {
           const { done, value } = await reader.read();

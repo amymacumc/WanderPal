@@ -9,24 +9,6 @@ import { useChat } from './logic/useChat';
 
 let currentId = 4;
 
-const Messages = [
-    {
-        id: 1,
-        role: 'user' as const,
-        content: '好的，请问你本次出行的预算是多少？',
-    },
-    {
-        id: 2,
-        role: 'assistant' as const,
-        content: '1w5左右',
-    },
-    {
-        id: 3,
-        role: 'user' as const,
-        content: '好的正在为您规划5天4晚日本东京，预算在1w5以内的旅行攻略...'
-    }
-];
-
 const TipList = [
     '帮我推荐目的地',
     '帮我规划日本美食之旅',
@@ -34,7 +16,12 @@ const TipList = [
 ]
 
 const ChatUI: React.FC = () => {
-  const {messages, input, setInput, append} = useChat(Messages);
+  const {messages, input, setInput, append} = useChat([{
+    id: '1',
+    role: 'assistant',
+    content: '你好，我是Eric旅行规划师，很高兴为你服务。',
+    type: 'card'
+  }]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -72,7 +59,7 @@ const ChatUI: React.FC = () => {
            {TipList.map(tip => (
              <TipBubble 
                onClick={() => {
-                 append({id: currentId++, content: tip, role:'user' })
+                 append({id: `user-${currentId++}`, content: tip, role:'user', type: 'message' })
                }} 
                key={tip} 
                content={tip}
@@ -88,7 +75,7 @@ const ChatUI: React.FC = () => {
            value={input} 
            onChange={setInput} 
            onSubmit={(message) => {
-             append({id: currentId++, content: message, role:'user' })
+             append({id: `user-${currentId++}`, content: message, role:'user', type: 'message' })
              setInput('');
            }} 
          />
