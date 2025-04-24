@@ -6,7 +6,7 @@ export interface User {
   mbti: string;
 } 
 
-export interface PlanOverview {
+export interface planOverview {
   title: string;
   daily_plans: DailyPlan[];
   cost: number;
@@ -15,6 +15,17 @@ export interface PlanOverview {
 export interface DailyPlan {
   id: string;
   activities: Activity[];
+  routes: Route[];
+}
+
+export interface Route {
+  way: string;
+  distance: string;
+  time: string;
+  activity_ids: {
+    from: string;
+    to: string;
+  }
 }
 
 export interface Activity {
@@ -25,4 +36,5 @@ export interface Activity {
     longitude: number;
   };
   description: string;
+  imageUrl?: string;
 }
