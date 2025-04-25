@@ -10,6 +10,8 @@ export interface planOverview {
   title: string;
   daily_plans: DailyPlan[];
   cost: number;
+  id: string;
+  reminder: string[];
 }
 
 export interface DailyPlan {
@@ -22,19 +24,15 @@ export interface Route {
   way: string;
   distance: string;
   time: string;
-  activity_ids: {
-    from: string;
-    to: string;
-  }
+  from_name: string;
+  to_name: string;
 }
 
 export interface Activity {
   id: string;
   name: string;
-  coordinates: {
-    latitude: number;
-    longitude: number;
-  };
+  latitude: number;
+  longitude: number;
   description: string;
-  imageUrl?: string;
+  image?: string;
 }

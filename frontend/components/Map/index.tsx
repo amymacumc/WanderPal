@@ -50,7 +50,7 @@ const Map: React.FC<MapProps> = ({
             viewMode: '2D',
             zoom: 13,
             zooms: [13, 13], // Lock zoom level
-            center: routes[0].position,
+            center: routes[0]?.position,
             scrollWheel: false, // Disable mouse wheel zoom
             keyboardEnable: false, // Disable keyboard controls
             touchZoom: false, // Disable pinch zoom on mobile

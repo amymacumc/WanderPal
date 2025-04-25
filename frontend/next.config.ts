@@ -27,6 +27,10 @@ const nextConfig: NextConfig = {
       {
         source: '/plan/list',
         destination: 'http://localhost:8000/plan/list'
+      },
+      {
+        source: '/plan/save',
+        destination: 'http://localhost:8000/plan/save'
       }
     ];
   },

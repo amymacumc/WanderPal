@@ -8,7 +8,7 @@ interface PlanOverviewProps extends travelOverview {}
 
 const dayFormater = (num: number) => `DAY ${num}`;
 
-const PlanOverview: React.FC<PlanOverviewProps> = ({ title, daily_plan, estimated_budget, id }) => {
+const PlanOverview: React.FC<PlanOverviewProps> = ({ title, daily_plan, estimated_budget, id, image }) => {
   const router = useRouter();
 
   return (
@@ -19,6 +19,13 @@ const PlanOverview: React.FC<PlanOverviewProps> = ({ title, daily_plan, estimate
         <div>{`共${daily_plan.reduce((sum, plan) => sum + plan.length, 0)}个地点`}</div>
       </div>
       {estimated_budget && <div className='color-primary border border-color-primary w-fit rounded-full px-2 py-1 text-sm'>{`预估${estimated_budget}元`}</div>}
+      <div w-full>
+        <img
+          src={image}
+          alt="plan"
+          className="w-full h-full object-cover"
+        />
+      </div>
       {daily_plan.map((plan, index) => <OverviewCard key={index} title={dayFormater(index + 1)} location={plan.map((activity) => activity)} onClick={() => {}} />)}
       <button 
         onClick={() => {

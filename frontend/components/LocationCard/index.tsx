@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { CarFront } from 'lucide-react';
+import { CarFront, Footprints } from 'lucide-react';
 
 interface LocationCardProps {
   type?: string;
@@ -15,8 +15,20 @@ interface LocationCardProps {
   transportInfo?: {
     distance: string;
     duration: string;
+    way: string;
   };
   onClick?: () => void;
+}
+
+function getIconByWay(way: string) {
+  switch (way) {
+    case '步行':
+      return <Footprints />;
+    case '打车':
+      return <CarFront />;
+    default:
+      return <CarFront />;
+  }
 }
 
 const LocationCard: React.FC<LocationCardProps> = ({
@@ -32,12 +44,7 @@ const LocationCard: React.FC<LocationCardProps> = ({
     <div className="w-full bg-white rounded-xl p-4 space-y-4" onClick={onClick}>
       <div className="flex gap-4">
         <div className="w-20 h-20 relative rounded-lg overflow-hidden flex-shrink-0">
-          <Image
-            src={imageUrl}
-            alt={name}
-            fill
-            className="object-cover"
-          />
+          <img src={imageUrl} alt={name} className="absolute inset-0 object-cover" />
         </div>
         <div className="flex-1">
           <div className="text-gray-500 text-sm mb-1">{type}</div>
@@ -60,7 +67,7 @@ const LocationCard: React.FC<LocationCardProps> = ({
 
       {transportInfo && (
         <div className="flex items-center gap-2 text-gray-600">
-          <CarFront />
+          {getIconByWay(transportInfo.way)}
           <span>{transportInfo.distance}·{transportInfo.duration}</span>
         </div>
       )}

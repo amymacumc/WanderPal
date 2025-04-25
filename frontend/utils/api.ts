@@ -1,4 +1,7 @@
-import { User } from '../types/user';
+import { travelOverview } from '@/components/chatUI/type';
+import { DailyPlan, planOverview, User } from '../types/user';
+import { getLocationSum } from './convert';
+import { TravelPlan } from '@/app/plan/page';
 
 interface ApiResponse<T> {
   code: number;
@@ -59,7 +62,7 @@ export async function sendChatMessage(message: string): Promise<Response> {
   return response.json();
 } 
 
-export async function getTravelPlan(planId: string): Promise<ApiResponse<{ plan_id: string }>> {
+export async function getTravelPlan(planId: string): Promise<ApiResponse<{travel_plan: planOverview}>> {
   const response = await fetch('/plan/detail', {
     method: 'POST',
     headers: {
@@ -89,7 +92,7 @@ export async function saveTravelPlan(planId: string): Promise<ApiResponse<{}>> {
   return response.json();
 }
 
-export async function getTravelList(): Promise<ApiResponse<{ plans: string[] }>> {
+export async function getTravelList(): Promise<TravelPlan[]> {
   const response = await fetch('/plan/list', {
     method: 'POST',
     headers: {
@@ -99,5 +102,16 @@ export async function getTravelList(): Promise<ApiResponse<{ plans: string[] }>>
   if (!response.ok) {
     throw new Error('Failed to get travel plans');
   }
-  return response.json();
+
+  const data = await response.json();
+  console.log(data);
+  return data?.data?.travel_plans?.map((plan: travelOverview) => ({
+    id: plan.id,
+    title: plan.title,
+    startDate: '--',
+    endDate: '--',
+    duration: `${plan.daily_plan.length}天${plan.daily_plan.length - 1}晚`,
+    locations: getLocationSum(plan),
+    image: plan.image,
+  }));
 }

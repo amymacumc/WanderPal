@@ -1,6 +1,6 @@
 'use client'
 import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { DailyPlan, planOverview } from '@/types/user';
 import Tabs from '@/components/tabs';
 import Map from '@/components/Map';
@@ -20,26 +20,33 @@ function getRoutesByTab(daily_plans: DailyPlan[], activeTab: number) {
 }
 
 export default function TravelPage() {
+    const router = useRouter();
     const searchParams = useSearchParams();
     const id = searchParams.get('id');
-    const [planOverviewData, setPlanOverviewData] = useState<planOverview>({});
-    const {title = '',  daily_plans = [], cost = ''} = planOverviewData;
+    const [planOverviewData, setPlanOverviewData] = useState<planOverview>({} as any);
+    const {title = '',  daily_plans = [], cost = '', reminder = []} = planOverviewData;
     const tabs = ['概览', ...daily_plans.map((plan, index) => dayFormater(index + 1))];
     const [activeTab, setActiveTab] = useState(0);
 
     useEffect(() => {
         if(id) {
             getTravelPlan(id as string).then((res) => {
-                setPlanOverviewData(res.data);
-            })
+                setPlanOverviewData(res.data.travel_plan);
+            }).catch((err) => {console.log(err)});
         }
     }, [id])
 
     function renderTabContent(daily_plans: DailyPlan[], activeTab: number) {
         if(activeTab === 0) {
             return (<>
-            {daily_plans.map((plan, index) => <OverviewCard key={plan.id} title={dayFormater(index + 1)} location={plan.activities.map((activity) => activity.name)} onClick={() => {setActiveTab(index + 1)}} />)}
-            <Reminder />
+            {daily_plans.map((plan, index) => <OverviewCard key={index} title={dayFormater(index + 1)} location={plan.activities.map((activity) => activity.name)} onClick={() => {setActiveTab(index + 1)}} />)}
+            <Reminder items={reminder.map(str => {
+                const result = str.split(':').map(str => str.trim())
+                return {
+                    title: result[0],
+                    description: result[1],
+                }
+            })} />
             </>) 
         } else {
             return <PlanDetails plan={daily_plans[activeTab - 1]} />;
@@ -66,7 +73,12 @@ export default function TravelPage() {
             <div 
                 className='z-3 absolute bottom-4 left-1/2 -translate-x-1/2 h-12 bg-[#011534] text-white rounded-full flex items-center justify-center cursor-pointer px-4 py-2 self-center'
                 onClick={() => {
-                    saveTravelPlan(id)
+                    if(!id) {
+                        console.error('id is undefined');
+                    };
+                    id && saveTravelPlan(id).then(() => {
+                        router.push('/plan')
+                    });
                 }}
             >
                 保存为我的行程
