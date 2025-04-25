@@ -2,7 +2,6 @@ import UserBubble from "../UserBubble";
 import SystemBubble from "../SystemBubble";
 import PlanBubble from "../PlanBubble";
 import type { Message } from '../type';
-import { planOverviewData } from "@/mock/index";
 
 interface BubbleListProps {
     messages: Message[];
@@ -14,7 +13,7 @@ function renderMessage(message: Message) {
     } else if (message.type === 'plan') {
         return <PlanBubble planList={message.plan} />
     } else {
-        return <SystemBubble content={message.content} />
+        return <SystemBubble content={message.content} loading={message.loading} />
     }
 }
 

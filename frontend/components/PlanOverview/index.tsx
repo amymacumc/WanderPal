@@ -19,7 +19,7 @@ const PlanOverview: React.FC<PlanOverviewProps> = ({ title, daily_plan, estimate
         <div>{`共${daily_plan.reduce((sum, plan) => sum + plan.length, 0)}个地点`}</div>
       </div>
       {estimated_budget && <div className='color-primary border border-color-primary w-fit rounded-full px-2 py-1 text-sm'>{`预估${estimated_budget}元`}</div>}
-      <div w-full>
+      <div className='w-full'>
         <img
           src={image}
           alt="plan"

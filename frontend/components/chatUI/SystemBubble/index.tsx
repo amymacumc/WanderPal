@@ -4,13 +4,15 @@ import { Bubble } from '@ant-design/x';
 
 interface UserBubbleProps {
     content: string;
+    loading?: boolean;
 }
 
 const SystemBubble = ({
-    content
+    content,
+    loading
 }: UserBubbleProps) => {
     return (
-        <Bubble content={content} placement='start' />
+        <Bubble content={content} placement='start' loading={loading} />
     )
 }
 

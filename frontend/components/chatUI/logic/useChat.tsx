@@ -24,7 +24,8 @@ export function useChat(initMessages: Message[]) {
           id: responseId,
           role: 'assistant',
           type: 'chunk',
-          content: '' // Start with empty content
+          content: '', 
+          loading: true
         }]);
 
         const response = await fetch('http://localhost:8000/chat', {
@@ -67,32 +68,44 @@ export function useChat(initMessages: Message[]) {
                       if (msg.id === streamingMessageIdRef.current) {
                         return {
                           ...msg,
-                          content: msg.content + assistantMessage.content
+                          content: msg.content + assistantMessage.content,
+                          loading: false
                         };
                       }
                       return msg;
                     });
                   });
                 } else if (assistantMessage.type === 'message') {
-                  // For card type messages, replace the streaming message or add new
+                  const idRef = streamingMessageIdRef.current;
+                  const messageHolder = {
+                    role: 'assistant',
+                    type: 'message',
+                    content: '',
+                    id: Date.now().toString(),
+                    loading: true,
+                  } as const;
+                  streamingMessageIdRef.current = messageHolder.id; // Set the new streaming ID
+
                   setMessages(prev => {
-                    return prev.map(msg => {
+                    return [...prev.map(msg => {
                       // Find the current streaming message by ID
-                      if (msg.id === streamingMessageIdRef.current) {
+                      if (msg.id === idRef) {
                         return {
                           ...msg,
-                          content: msg.content + assistantMessage.content
+                          content: msg.content + assistantMessage.content,
+                          loading: false
                         };
                       }
                       return msg;
-                    });
+                    }), messageHolder];
                   });
                 } else if (assistantMessage.type === 'plan') {
                   // Handle error message
+                  const idRef = streamingMessageIdRef.current;
                   streamingMessageIdRef.current = null; // Reset streaming ID
 
                   setMessages(prev => {
-                      return [...prev, {
+                      return [...prev.filter(msg => msg.id !== idRef), {
                         type: 'plan',
                         content: '',
                         plan: assistantMessage.content.recommend_travels,

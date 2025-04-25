@@ -12,6 +12,7 @@ interface baseMessage {
     role: 'user' | 'assistant';
     type: 'message';
     content: string;
+    loading?: boolean;
 }
 
 interface chunkMessage {
@@ -19,6 +20,7 @@ interface chunkMessage {
     role: 'assistant';
     type: 'chunk';
     content: string;
+    loading?: boolean;
 }
 
 interface planMessage {
@@ -27,6 +29,7 @@ interface planMessage {
     type: 'plan';
     content: string;
     plan: travelOverview[];
+    loading?: boolean;
 }
 
 export interface travelOverview {
