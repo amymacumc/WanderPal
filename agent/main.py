@@ -200,7 +200,7 @@ async def detail(request: Request):
                 results = await asyncio.gather(*tasks)
 
                 for activity, image_url in zip(daily_plan['activities'], results):
-                    activity['iamge'] = image_url
+                    activity['image'] = image_url
                     activity['id'] = str(uuid.uuid4())
 
 
