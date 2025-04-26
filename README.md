@@ -117,6 +117,22 @@ pnpm run dev
 
 ---
 
+### config API keys
+1. 在 `agent` 目录下创建 `.env` 文件
+```
+API_KEY=XXX
+MODEL=gpt-4o-mini
+GAODE_API_KEY=XXX
+AMAP_MAPS_API_KEY=XXX
+
+```
+
+2. 在 `frontend` 目录下创建 `.env.local` 文件
+```
+NEXT_PUBLIC_AMAP_KEY=XXX
+NEXT_PUBLIC_AMAP_SECURITY_CODE=XXX
+```
+
 ## 🛠 Deployment
 
 ---
