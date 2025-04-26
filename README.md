@@ -69,14 +69,51 @@ TBD
 
 ## 🧪 Getting Started
 
+### Start Frontend
+
+1. make sure you have Node.js installed
+
 ```
-// install pnpm
+node -v
+// if you get a version number, you are good to go
+// if not, please install it
+// you can download it from here: https://nodejs.org/zh-cn/download 
+```
+
+2. install pnpm
+```
 npm install -g pnpm
+```
+
+3. install dependencies and start the frontend
+
+```
+// cd into the frontend directory
+cd frontend
 // install dependencies
 pnpm install
-// make sure you have Node.js installed
+```
+
+4. start the frontend
+```
 pnpm run dev
 ```
+
+### Start Backend
+1. 进入 `agent` 目录：
+   ```bash
+   cd agent
+   ```
+
+2. 安装依赖：
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. 启动 Agent：
+   ```bash
+   python main.py
+   ```
 
 ---
 
