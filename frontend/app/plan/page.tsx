@@ -8,8 +8,6 @@ import { getTravelList } from '@/utils/api';
 export interface TravelPlan {
   id: string;
   title: string;
-  startDate: string;
-  endDate: string;
   duration: string;
   locations: number;
   image: string;
@@ -105,7 +103,7 @@ const SwipeableCard = ({ plan, onDelete, onClick }: { plan: TravelPlan; onDelete
             )}
             <h3 className="text-xl font-bold mb-2">{plan.title}</h3>
             <div className="text-gray-500 space-y-1">
-              <p>{plan.startDate}-{plan.endDate} {plan.duration}</p>
+              <p>{plan.duration}</p>
               <p>共{plan.locations}个地点</p>
             </div>
           </div>
