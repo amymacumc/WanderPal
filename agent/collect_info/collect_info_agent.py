@@ -58,7 +58,7 @@ class CollectionInfoAgent:
             print('当前收集的信息：', user_info)
 
             if user_info.is_info_complete():
-                self.close()
+                await self.close()
                 yield user_info
             else:
                 agent_input = ''
