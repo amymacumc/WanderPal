@@ -23,6 +23,7 @@ export default function TravelPage() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const id = searchParams.get('id');
+    const fromPlan = searchParams.get('from');
     const [planOverviewData, setPlanOverviewData] = useState<planOverview>({} as any);
     const {title = '',  daily_plans = [], cost = '', reminder = []} = planOverviewData;
     const tabs = ['概览', ...daily_plans.map((plan, index) => dayFormater(index + 1))];
@@ -70,7 +71,7 @@ export default function TravelPage() {
             </div>
             <Tabs tabs={tabs} activeTab={tabs[activeTab]} onChange={(tab,index) => {setActiveTab(index)}} />
             {renderTabContent(daily_plans, activeTab)}
-            <div 
+            {!fromPlan && <div 
                 className='z-3 absolute bottom-4 left-1/2 -translate-x-1/2 h-12 bg-[#011534] text-white rounded-full flex items-center justify-center cursor-pointer px-4 py-2 self-center'
                 onClick={() => {
                     if(!id) {
@@ -82,7 +83,7 @@ export default function TravelPage() {
                 }}
             >
                 保存为我的行程
-            </div>
+            </div>}
         </div>
         </div>
 

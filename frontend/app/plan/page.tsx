@@ -37,7 +37,7 @@ const PlanPage = () => {
       <div className="space-y-4">
         {plans.map((plan) => (
           <SwipeableCard key={plan.id} plan={plan} onDelete={handleDelete} onClick={() => {
-            router.push(`/travel?id=${plan.id}`);
+            router.push(`/travel?id=${plan.id}&from=plan`);
           }} />
         ))}
       </div>
