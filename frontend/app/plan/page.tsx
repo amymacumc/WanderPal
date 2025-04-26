@@ -41,6 +41,12 @@ const PlanPage = () => {
           }} />
         ))}
       </div>
+      <button 
+        className="z-3 absolute bottom-4 left-1/2 -translate-x-1/2 h-12 bg-[#011534] text-white rounded-full flex items-center justify-center cursor-pointer px-4 py-2 self-center"
+        onClick={() => router.push('/conversation')}
+      >
+      创建新的行程
+      </button>
     </div>
   );
 };
