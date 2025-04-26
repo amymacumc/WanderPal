@@ -51,13 +51,16 @@ async def main() -> None:
         model_client=model_client,
         tools=tools,
         reflect_on_tool_use=True,
-        model_client_stream=True,   
+        model_client_stream=True,
     )
     
     result = await agent.run(task=build_travel_plan_prompt(plan))
-    print(result.messages[-1].content)
-    output_json = json.loads(result.messages[-1].content)  
-    print(output_json)
+
+    extract_response = await model_client.create(
+        [UserMessage(content=result.messages[-1].content, source="user")],
+        json_output=DailyPlans
+    )
+    print(extract_response.content)
         
     await model_client.close()
 

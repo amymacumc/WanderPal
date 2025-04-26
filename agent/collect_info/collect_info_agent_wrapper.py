@@ -16,4 +16,4 @@ class CollectionInfoAgentWrapper:
             return None
         
     async def close(self):
-        self.agent.close()
+        await self.agent.close()

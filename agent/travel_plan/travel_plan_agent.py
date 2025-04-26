@@ -19,14 +19,14 @@ async def get_plan_detail(daily_plan, api_key, gaode_mcp_key, model) -> None:
             "json_output": True,
             "family": "unknown"
         },
-        timeout=30
+        timeout=300
     )
 
     url = 'https://mcp.amap.com/sse?key=' + gaode_mcp_key
     server_params = SseServerParams(
         url=url,
         headers={"Content-Type": "application/json"},
-        timeout=30,  # Connection timeout in seconds
+        timeout=300,  # Connection timeout in seconds
     )
 
     tools = await mcp_server_tools(server_params)
@@ -41,8 +41,13 @@ async def get_plan_detail(daily_plan, api_key, gaode_mcp_key, model) -> None:
     )
     
     result = await agent.run(task=build_travel_plan_prompt(daily_plan))
-    output_json = json.loads(result.messages[-1].content)  
+
+    extract_response = await model_client.create(
+        [UserMessage(content=result.messages[-1].content, source="user")],
+        json_output=DailyPlans
+    )
+    res = DailyPlans.parse_raw(extract_response.content)  
     
     await model_client.close()
 
-    return output_json
+    return res

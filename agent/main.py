@@ -147,9 +147,9 @@ async def chat(request: Request):
                         tarvel_plans[travel.id] = travel
                 chat_history[user_id].append({"role": "user", "type": "message", "content": recommend_travels.dict()})
                 yield json.dumps(response_success(data={"role": "assistant", "type": "plan", "content": recommend_travels.dict()}), ensure_ascii=False) + "\n"
-                recommend_agent.close()
+                await recommend_agent.close()
                 if user_id in user_agents:
-                    user_agents[user_id].close()
+                    await user_agents[user_id].close()
                     del user_agents[user_id]
             else:
                 while reply:
@@ -188,29 +188,30 @@ async def detail(request: Request):
         travel_plan = tarvel_plans[travel_plan_id]
 
         travel_plan_detail = await get_plan_detail(travel_plan.daily_plan, API_KEY, AMAP_MAPS_API_KEY, MODEL)
-        travel_plan_detail['id'] = travel_plan.id
-        travel_plan_detail['title'] = travel_plan.title
+        travel_plan_detail.id = travel_plan.id
+        travel_plan_detail.title = travel_plan.title
+        travel_plan_detail.location = travel_plan.location
 
         async with aiohttp.ClientSession() as session:
-            for daily_plan in travel_plan_detail['daily_plans']:
+            for daily_plan in travel_plan_detail.daily_plans:
                 tasks = []
-                for activity in daily_plan['activities']:
-                    task = get_first_photo_url_async(session, activity['name'], GAODE_API_KEY)
+                for activity in daily_plan.activities:
+                    task = get_first_photo_url_async(session, activity.name, GAODE_API_KEY)
                     tasks.append(task)
                 results = await asyncio.gather(*tasks)
 
-                for activity, image_url in zip(daily_plan['activities'], results):
-                    activity['image'] = image_url
-                    activity['id'] = str(uuid.uuid4())
+                for activity, image_url in zip(daily_plan.activities, results):
+                    activity.image = image_url
+                    activity.id = str(uuid.uuid4())
 
 
-        travel_plan_details[travel_plan_id] = travel_plan_detail
+        travel_plan_details[travel_plan_id] = travel_plan_detail.dict()
         return JSONResponse(response_success(data={
-            "travel_plan" : travel_plan_detail
+            "travel_plan" : travel_plan_detail.dict()
         }))
     except Exception as e:
+        print(f"查看详情出错了：{e}")
         return JSONResponse(response_error("Query failed, please query again"))
-
 
 @app.post("/plan/save")
 async def save(request: Request):
@@ -231,7 +232,6 @@ async def save(request: Request):
         user_map_travel[user_id].append(travel_plan_id)
     
     return JSONResponse(response_success("Saved success"))
-
 
 @app.post("/plan/list")
 async def list(request: Request):
