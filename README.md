@@ -1,16 +1,14 @@
-⸻
-
-🧳 WanderPal | Your Personal Travel Companion Agent
+# 🧳 WanderPal | Your Personal Travel Companion Agent
 
 Companion-style Travel Chatbot · Intelligent Map-based Itinerary Planning
 
 ⸻
 
-🌈 WanderPal — More than just travel planning. We travel with you.
+## 🌈 WanderPal — More than just travel planning. We travel with you.
 
 ⸻
 
-✨ Project Overview
+## ✨ Project Overview
 
 WanderPal is an AI-powered travel planning agent that combines emotionally intelligent dialogue with automated itinerary generation based on real-world map data (Gaode Map MCP API).
 
@@ -21,7 +19,7 @@ Our mission is to help users plan meaningful, personalized journeys — not just
 
 ⸻
 
-🚀 Key Features
+## 🚀 Key Features
 
 🎭 Personalized Agent Selection	Choose from 3 emotional modes: Gentle Care, Thoughtful Butler, or Bold Explorer
 ✨ Companion-style Chat UX	Guided prompts to collect travel needs (time, destination, budget, mood, style)
@@ -31,52 +29,52 @@ Our mission is to help users plan meaningful, personalized journeys — not just
 
 ⸻
 
-🛠️ Tech Stack
+## 🛠️ Tech Stack
 	•	Frontend: Node.js
 	•	Backend: Python
 	•	AI Engine: OpenAI GPT-4o
-  •	Framework: Autogen
+        •	Framework: Autogen
 	•	Map Service: Gaode Map API + MCP
 	•	Deployment: Vercel
 
 ⸻
 
-📦 Getting Started
+## 📦 Getting Started
 
 Start Frontend
 
-# Clone the repository
+### Clone the repository
 git clone https://github.com/amymacumc/WanderPal.git
 cd WanderPal
 
-# Install frontend dependencies
+### Install frontend dependencies
 npm install
 
-# Run the development server
+### Run the development server
 npm run dev
 
 Open http://localhost:3000 to explore the application.
 
 ⸻
 
-Start Backend
+## Start Backend
 
-# Navigate to the agent backend directory
+### Navigate to the agent backend directory
 cd agent
 
-# Install backend dependencies
+### Install backend dependencies
 pip install -r requirements.txt
 
-# Start the Agent server
+### Start the Agent server
 python main.py
 
 The backend manages conversational flows, travel planning prompts, and calls AMap function calling for smart route optimization.
 
 ⸻
 
-🔥 Core User Flow
+## 🔥 Core User Flow
 	1.	User completes the profile information → chooses their preferred Agent persona.
-  2.  User lands in the chatbox and starts a conversation with the chosen Agent.
+        2.  User lands in the chatbox and starts a conversation with the chosen Agent.
 	2.	The Agent collects travel preferences (date, destination, budget, style, mood).
 	3.	System uses Gaode MCP API to generate a day-by-day route-optimized itinerary.
 	4.	Pre-departure reminders and cultural notices are provided automatically.
@@ -144,7 +142,7 @@ sequenceDiagram
 
 ⸻
 
-🌟 Special Highlights
+## 🌟 Special Highlights
 	•	Conversational Soft Guidance: Encouraging users to express vague or emotional needs and translating them into actionable plans.
 	•	Real-time Map Validation: Using Amap function calling to plan the route and transportation.
 	•	Emotional Companion Agent: Offers 3 different Agent personas, with each one offering different prompts based on the persona settings. 
@@ -152,7 +150,7 @@ sequenceDiagram
 
 ⸻
 
-🧭 Future Roadmap
+## 🧭 Future Roadmap
 	•	Collaborative group itinerary planning
 	•	Dynamic “inspiration cards” based on real-time mood detection
 	•	Integration of hotel and restaurant recommendations via external APIs
@@ -161,13 +159,7 @@ sequenceDiagram
 
 ⸻
 
-📄 License
-
-MIT License.
-
-⸻
-
-🎬 Demo & Link
+## 🎬 Demo & Link
 	•	Live Demo: https://wanderpal.vercel.app/  (replace with your actual deployed link if different)
 	•	Frontend Repository: https://github.com/amymacumc/WanderPal
 	•	Backend Repository: https://github.com/amymacumc/WanderPal/tree/main/agent (if you separate backend)
@@ -175,12 +167,12 @@ MIT License.
 
 ⸻
 
-- 💖 **Agent Personality**  
+- 💖 Agent Personality 
   A therapeutic and friendly travel companion persona to reduce decision anxiety.
 
 ⸻
 
-- 🧑‍💻 Team
+## 🧑‍💻 Team
 
 | Name | Role           | Responsibilities                         |
 |------|----------------|------------------------------------------|
@@ -192,7 +184,7 @@ MIT License.
 
 ⸻
 
-📚 User Story Example
+## 📚 User Story Example
 
 User Story 1｜Emily’s “Gentle Escape” Urban Trip
 
