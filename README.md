@@ -2,7 +2,7 @@
 
 Companion-style Travel Chatbot · Intelligent Map-based Itinerary Planning
 
-** 🌈 WanderPal — More than just travel planning. We travel with you. **
+**🌈 WanderPal — More than just travel planning. We travel with you.**
 
 ⸻
 
