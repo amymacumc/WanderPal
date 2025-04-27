@@ -165,12 +165,10 @@ sequenceDiagram
 
 ## 🎬 Demo & Links
 
+- **Youtube video**:
 - **Live Demo**: [https://wanderpal.vercel.app/](https://wanderpal.vercel.app/)
 - **Frontend Repository**: [https://github.com/amymacumc/WanderPal](https://github.com/amymacumc/WanderPal)
 - **Backend Repository**: [https://github.com/amymacumc/WanderPal/tree/main/agent](https://github.com/amymacumc/WanderPal/tree/main/agent)
-- **Demo Credentials** (Optional):
-  - Username: `demo@wanderpal.com`
-  - Password: `wanderpal123`
 
 ---
 
