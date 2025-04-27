@@ -39,7 +39,13 @@ const PlanDetails = ({ plan }: PlanDetailsProps) => {
             ))}
             {showPopup && 
             <MobilePopup visible={showPopup} onClose={() => setShowPopup(false) }>
-                <ActivityDetail className='h-full' title={activeActivity.name} description={activeActivity.description} img={activeActivity.image || 'https://cataas.com/cat'}  />
+                <ActivityDetail 
+                    className='h-full' 
+                    title={activeActivity.name} 
+                    description={activeActivity.description} 
+                    img={activeActivity.image || 'https://cataas.com/cat'}  
+                    infos={activeActivity.infos}
+                />
             </MobilePopup>
             }
         </div>

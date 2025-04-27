@@ -35,4 +35,5 @@ export interface Activity {
   longitude: number;
   description: string;
   image?: string;
+  infos?: string[];
 }
