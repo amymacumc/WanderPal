@@ -20,7 +20,7 @@ const iconList = [
 
 const ActivityDetail: React.FC<ActivityDetailProps> = ({ title, description, img, className, infos}) => {
   return (
-    <div className={cn('space-y-6 px-4 py-2 z-60 overflow-scroll', className)}>
+    <div className={cn('space-y-6 px-4 py-2 overflow-scroll', className)}>
         <div className="color-title text-2xl font-bold">{title}</div>
         <div className="h-60 w-full overflow-hidden">
           <img src={img} alt="" width={350} height={200} />
