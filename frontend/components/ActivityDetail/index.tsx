@@ -1,6 +1,7 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 import { Clock7, TicketMinus, MapPin, Phone, Info } from "lucide-react";
+import BasicImage from "@/components/ui/BasicImage";
 
 export interface ActivityDetailProps {
   title: string;
@@ -23,7 +24,7 @@ const ActivityDetail: React.FC<ActivityDetailProps> = ({ title, description, img
     <div className={cn('space-y-6 px-4 py-2 overflow-scroll', className)}>
         <div className="color-title text-2xl font-bold">{title}</div>
         <div className="h-60 w-full overflow-hidden">
-          <img src={img} alt="" width={350} height={200} />
+          <BasicImage src={img} alt={title} width={350} height={200} />
         </div>
         { description && <div>
             <div className="color-title font-bold">简介</div>

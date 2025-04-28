@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, PanInfo, useAnimation, useMotionValue, useTransform } from 'framer-motion';
 import { getTravelList } from '@/utils/api';
+import BasicImage from "@/components/ui/BasicImage";
 
 export interface TravelPlan {
   id: string;
@@ -108,7 +109,11 @@ const SwipeableCard = ({ plan, onDelete, onClick }: { plan: TravelPlan; onDelete
             </div>
           </div>
           <div className="relative w-24 h-24 rounded-2xl overflow-hidden">
-            <img src={plan.image} alt={plan.title} className="absolute inset-0 object-cover" />
+            <BasicImage 
+              src={plan.image} 
+              alt={plan.title} 
+              className="absolute inset-0 object-cover w-full h-full" 
+            />
           </div>
         </div>
       </motion.div>

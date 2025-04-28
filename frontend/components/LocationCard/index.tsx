@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { CarFront, Footprints } from 'lucide-react';
+import BasicImage from '../ui/BasicImage';
 
 interface LocationCardProps {
   type?: string;
@@ -44,7 +45,7 @@ const LocationCard: React.FC<LocationCardProps> = ({
     <div className="w-full bg-white rounded-xl p-4 space-y-4" onClick={onClick}>
       <div className="flex gap-4">
         <div className="w-20 h-20 relative rounded-lg overflow-hidden flex-shrink-0">
-          <img src={imageUrl} alt={name} className="absolute inset-0 object-cover" />
+          <BasicImage src={imageUrl} alt={name} className="absolute inset-0 object-cover" />
         </div>
         <div className="flex-1">
           <div className="text-gray-500 text-sm mb-1">{type}</div>

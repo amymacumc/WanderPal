@@ -1,4 +1,5 @@
 import React from 'react';
+import BasicImage from '../ui/BasicImage';
 import { Sparkles } from 'lucide-react';
 
 interface ProfileCardProps {
@@ -18,7 +19,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ name, avatar, description }) 
 
             {/* Profile Image Container */}
             <div className="relative aspect-square w-full overflow-hidden rounded-[1.5rem]">
-                <img 
+                <BasicImage
                     src={avatar} 
                     alt={name}
                     className="w-full h-full object-cover"
