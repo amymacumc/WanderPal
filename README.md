@@ -69,31 +69,6 @@ A playful and daring Agent that helps users discover unique, off-the-beaten-path
 
 ---
 
-## 📦 Getting Started
-
-### Start Frontend
-
-```bash
-git clone https://github.com/amymacumc/WanderPal.git
-cd WanderPal
-npm install
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) to explore the application.
-
----
-
-### Start Backend
-
-```bash
-cd agent
-pip install -r requirements.txt
-python main.py
-```
-
----
-
 ## 🔥 Core User Flow
 
 1. User completes the profile information → chooses their preferred Agent persona.
@@ -217,6 +192,31 @@ sequenceDiagram
 - **Live Demo**: [https://wanderpal.vercel.app/](https://wanderpal.vercel.app/)
 - **Frontend Repository**: [https://github.com/amymacumc/WanderPal](https://github.com/amymacumc/WanderPal)
 - **Backend Repository**: [https://github.com/amymacumc/WanderPal/tree/main/agent](https://github.com/amymacumc/WanderPal/tree/main/agent)
+
+---
+
+## 📦 Getting Started
+
+### Start Frontend
+
+```bash
+git clone https://github.com/amymacumc/WanderPal.git
+cd WanderPal
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to explore the application.
+
+---
+
+### Start Backend
+
+```bash
+cd agent
+pip install -r requirements.txt
+python main.py
+```
 
 ---
 
