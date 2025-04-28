@@ -32,7 +32,7 @@ Our mission is to help users plan meaningful, personalized journeys — not just
 
 - 🤗 Companion-style conversations: Warm, dynamic, and friendly agent personalities adapt to your mood and travel goals.
 - 🗺️ Smart route planning: Integrated with AMap function calling to automatically generate efficient travel routes and realistic daily plans.
-- 🧠 Proactive trip validation: Detects unreasonable itineraries and gently advises improvements (to be developed).
+- 🧠 Proactive trip validation: Allows user editing and detects unreasonable itineraries and gently advises improvements (to be developed).
 
 ---
 
@@ -43,6 +43,18 @@ Our mission is to help users plan meaningful, personalized journeys — not just
 - 🗺️ Smart Route Optimization: Automatically sequence daily routes with AMap function calling.
 - 🛠️ Real-time Reasonability Checks: Validate opening hours, traffic time, route duplication, and over-scheduling.
 - 📚 Pre-Departure Smart Reminders: Provide cultural tips, visa advice, and packing checklists.
+
+---
+
+## 💖 Agent Personality Overview
+
+We offer three distinct Agent modes to cater to different user preferences for personalized travel planning:
+- **Free Spirit (Healing & Gentle Companion)**
+A warm and empathetic Agent that invites users to share their current mood and travel inspirations. Whether you’re seeking an escape from the hustle or a place for inner healing, this Agent will accompany you in designing a soft, thoughtful journey.
+- **Personal Butler (Efficient & Detail-Oriented Planner)**
+A professional and attentive Agent that focuses on fulfilling users’ practical travel needs. Whether it’s precise transportation arrangements or detailed budget planning, this Agent delivers highly efficient and personalized itineraries.
+- **Inspiration Explorer (Adventurous & Bold Guide)**
+A playful and daring Agent that helps users discover unique, off-the-beaten-path destinations. From transparent bubble houses by the forest to hidden cafés in abandoned trains, this Agent sparks spontaneous, exciting adventures tailored to your mood.
 
 ---
 
@@ -89,8 +101,9 @@ python main.py
 3. The Agent collects travel preferences (date, destination, budget, style, mood).
 4. System uses AMap function calling to generate a day-by-day route-optimized itinerary.
 5. Pre-departure reminders and cultural notices are provided automatically.
-6. Users can edit, fine-tune, and save itineraries into a personal archive.
-7. Agent checks for common trip issues and gently suggests improvements.
+6. *(Planned feature)* Users can edit, fine-tune, and save itineraries into a personal archive.
+7. *(Planned feature)* Agent checks for common trip issues and gently suggests improvements.
+
 
 ```mermaid
 sequenceDiagram
@@ -172,20 +185,14 @@ sequenceDiagram
 
 ---
 
-## 💖 Agent Personality
-
-A therapeutic and friendly travel companion persona to reduce decision anxiety.
-
----
-
 ## 🧑‍💻 Team
 
-| Name | Role | Responsibilities |
-|:---|:---|:---|
-| Amy Ma (@amymacumc) | Project Manager / Product Manager | Product management, project planning, coordination, vision |
-| Xia Zhong | UX / UI Designer | Figma design, user experience workflows |
-| Keqin Ye | Frontend Developer | UI implementation, component logic |
-| Junhao Ma | Backend Developer | GPT integration, API services |
+| Name | Email | Role | Responsibilities |
+|:---|:---|:---|:---|
+| Amy Ma (@amymacumc) | amymacumc@example.com | Project Manager / Product Manager | Product management, project planning, coordination, vision |
+| Xia Zhong (@shinezhong) | shinezhong@example.com | UX / UI Designer | Figma design, user experience workflows |
+| Keqin Ye (@quiet-river) | quiet-river@example.com | Frontend Developer | UI implementation, component logic |
+| Junhao Ma (@huyonger) | huyonger@example.com | Backend Developer | GPT integration, API services |
 
 ---
 
