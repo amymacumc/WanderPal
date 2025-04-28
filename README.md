@@ -81,35 +81,12 @@ A playful and daring Agent that helps users discover unique, off-the-beaten-path
 
 ```mermaid
 flowchart TD
-    A[User starts application / accesses feature] --> B[App checks user profile status]
-    B --> C[Backend queries user profile from Database]
-    C --> D[Database returns profile status]
-
-    D -->|Profile incomplete| E[App notifies user to fill profile]
-    E --> F[User provides profile information]
-    F --> G[App saves profile info to Backend]
-    G --> H[Backend updates Database]
-    H --> I[Database confirms update]
-    I --> J[Backend confirms profile updated]
-
-    D -->|Profile complete| K[Display AI Assistant options]
-    J --> K
-
-    K --> L[User selects an AI Assistant]
-    L --> M[App initializes conversation with Backend and AI Service]
-    M --> N[AI gathers trip preferences (date, destination, budget, style, mood)]
-
-    N --> O[AI notifies completion and generates travel plans]
-    O --> P[Backend requests AI to provide plans]
-    P --> Q[AI returns generated plans]
-    Q --> R[Backend forwards plans to App]
-    R --> S[App displays trip plan options]
-
-    S --> T[User selects a trip plan]
-    T --> U[App saves selected plan to Backend]
-    U --> V[Backend stores plan in Database]
-    V --> W[Database confirms storage]
-    W --> X[Backend confirms plan saved]
+    A[User completes profile information and chooses Agent persona] --> B[User lands in the chatbox and starts conversation]
+    B --> C[Agent collects travel preferences (date, destination, budget, style, mood)]
+    C --> D[System generates day-by-day route-optimized itinerary using AMap function calling]
+    D --> E[Pre-departure reminders and cultural notices are provided]
+    E -.-> F[(Planned) Users can edit, fine-tune, and save itineraries into a personal archive]
+    F -.-> G[(Planned) Agent checks for common trip issues and suggests improvements]
 ```
 ---
 
@@ -241,10 +218,10 @@ python main.py
 
 | Name | Email | Role | Responsibilities |
 |:---|:---|:---|:---|
-| Amy Ma (@amymacumc) | amymacumc@example.com | Project Manager / Product Manager | Product management, project planning, coordination, vision |
-| Xia Zhong (@shinezhong) | shinezhong@example.com | UX / UI Designer | Figma design, user experience workflows |
-| Keqin Ye (@quiet-river) | quiet-river@example.com | Frontend Developer | UI implementation, component logic |
-| Junhao Ma (@huyonger) | huyonger@example.com | Backend Developer | GPT integration, API services |
+| Amy Ma (@amymacumc) | amyma2024@outlook.com | Project Manager / Product Manager | Product management, project planning, coordination, vision |
+| Xia Zhong (@shinezhong) | shinezhong0626@gmail.com | UX / UI Designer | Figma design, user experience workflows |
+| Keqin Ye (@quiet-river) | quietriver28@gmail.com | Frontend Developer | UI implementation, component logic |
+| Junhao Ma (@huyonger) | hv-huyon@microsoft.com | Backend Developer | GPT integration, API services |
 
 ---
 
