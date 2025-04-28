@@ -25,7 +25,7 @@ export default function Home() {
             <ProfileCard
                 name="专业规划"
                 description="专业规划"
-                avatar="https://cataas.com/cat"
+                avatar="/images/bulter.png"
             />
 
             {/* Content below card */}
