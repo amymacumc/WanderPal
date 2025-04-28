@@ -4,12 +4,11 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, PanInfo, useAnimation, useMotionValue, useTransform } from 'framer-motion';
 import { getTravelList } from '@/utils/api';
+import BasicImage from "@/components/ui/BasicImage";
 
 export interface TravelPlan {
   id: string;
   title: string;
-  startDate: string;
-  endDate: string;
   duration: string;
   locations: number;
   image: string;
@@ -37,10 +36,16 @@ const PlanPage = () => {
       <div className="space-y-4">
         {plans.map((plan) => (
           <SwipeableCard key={plan.id} plan={plan} onDelete={handleDelete} onClick={() => {
-            router.push(`/travel?id=${plan.id}`);
+            router.push(`/travel?id=${plan.id}&from=plan`);
           }} />
         ))}
       </div>
+      <button 
+        className="z-3 absolute bottom-4 left-1/2 -translate-x-1/2 h-12 bg-[#011534] text-white rounded-full flex items-center justify-center cursor-pointer px-4 py-2 self-center"
+        onClick={() => router.push('/')}
+      >
+      创建新的行程
+      </button>
     </div>
   );
 };
@@ -99,12 +104,16 @@ const SwipeableCard = ({ plan, onDelete, onClick }: { plan: TravelPlan; onDelete
             )}
             <h3 className="text-xl font-bold mb-2">{plan.title}</h3>
             <div className="text-gray-500 space-y-1">
-              <p>{plan.startDate}-{plan.endDate} {plan.duration}</p>
+              <p>{plan.duration}</p>
               <p>共{plan.locations}个地点</p>
             </div>
           </div>
           <div className="relative w-24 h-24 rounded-2xl overflow-hidden">
-            <img src={plan.image} alt={plan.title} className="absolute inset-0 object-cover" />
+            <BasicImage 
+              src={plan.image} 
+              alt={plan.title} 
+              className="absolute inset-0 object-cover w-full h-full" 
+            />
           </div>
         </div>
       </motion.div>

@@ -1,9 +1,9 @@
 "use client";
 import React from 'react';
-import type { planOverview, DailyPlan } from '@/types/user';
 import OverviewCard from '@/components/overviewCard';
 import { useRouter } from "next/navigation";
 import { travelOverview } from '../chatUI/type';
+import BasicImage from '../ui/BasicImage';
 interface PlanOverviewProps extends travelOverview {}
 
 const dayFormater = (num: number) => `DAY ${num}`;
@@ -20,7 +20,7 @@ const PlanOverview: React.FC<PlanOverviewProps> = ({ title, daily_plan, estimate
       </div>
       {estimated_budget && <div className='color-primary border border-color-primary w-fit rounded-full px-2 py-1 text-sm'>{`预估${estimated_budget}元`}</div>}
       <div className='w-full'>
-        <img
+        <BasicImage
           src={image}
           alt="plan"
           className="w-full h-full object-cover"

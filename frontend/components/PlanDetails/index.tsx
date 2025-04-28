@@ -25,7 +25,7 @@ const PlanDetails = ({ plan }: PlanDetailsProps) => {
                     type={'景点'} 
                     order={index + 1}  
                     name={activity.name} 
-                    imageUrl={activity.image || 'https://cataas.com/cat'}
+                    imageUrl={activity.image || ''}
                     transportInfo={index === arr.length - 1 ? undefined : {
                         distance: routes[index]?.distance,
                         duration: routes[index]?.time,
@@ -39,7 +39,13 @@ const PlanDetails = ({ plan }: PlanDetailsProps) => {
             ))}
             {showPopup && 
             <MobilePopup visible={showPopup} onClose={() => setShowPopup(false) }>
-                <ActivityDetail className='h-full' title={activeActivity.name} description={activeActivity.description} img={activeActivity.image || 'https://cataas.com/cat'}  />
+                <ActivityDetail 
+                    className='h-full' 
+                    title={activeActivity.name} 
+                    description={activeActivity.description} 
+                    img={activeActivity.image || ''}  
+                    infos={activeActivity.infos}
+                />
             </MobilePopup>
             }
         </div>

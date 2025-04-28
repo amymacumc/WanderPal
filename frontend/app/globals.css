@@ -8,6 +8,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+.aspect-card {
+  aspect-ratio: 1 / 1.3;
+}
+
 .color-sub-text {
   color: #8D9FB8;
 }

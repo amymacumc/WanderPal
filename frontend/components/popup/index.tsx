@@ -104,7 +104,7 @@ const MobilePopup: React.FC<MobilePopupProps> = ({
   const content = (
     <div 
       className={cn(
-        'fixed inset-0 z-50 flex',
+        'fixed inset-0 z-200 flex',
         getPositionStyles(),
         !isVisible && 'pointer-events-none',
         className

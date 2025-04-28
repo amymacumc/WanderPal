@@ -14,7 +14,7 @@ const PlanBubble: React.FC<PlanBubbleProps> = ({ planList }) => {
             <CarouselContent>
                 {
                     planList.map((plan, index) => 
-                        <CarouselItem key={index} className='basis-1/2'>
+                        <CarouselItem key={index} className='basis-72'>
                             <Card>
                                 <PlanOverview {...plan} />
                             </Card>
