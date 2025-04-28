@@ -80,13 +80,13 @@ A playful and daring Agent that helps users discover unique, off-the-beaten-path
 7. *(Planned feature)* Agent checks for common trip issues and gently suggests improvements.
 
 ```mermaid
-flowchart TD
+flowchart LR
     A[User completes profile information and chooses Agent persona] --> B[User lands in the chatbox and starts conversation]
-    B --> C[Agent collects travel preferences (date, destination, budget, style, mood)]
+    B --> C[Agent collects travel preferences eg: date, destination, budget, style, mood]
     C --> D[System generates day-by-day route-optimized itinerary using AMap function calling]
     D --> E[Pre-departure reminders and cultural notices are provided]
-    E -.-> F[(Planned) Users can edit, fine-tune, and save itineraries into a personal archive]
-    F -.-> G[(Planned) Agent checks for common trip issues and suggests improvements]
+    E -.-> F[Planned feature: Users can edit, fine-tune, and save itineraries into a personal archive]
+    F -.-> G[Planned feature: Agent checks for common trip issues and suggests improvements]
 ```
 ---
 
@@ -188,7 +188,7 @@ Open [http://localhost:3000](http://localhost:3000) to explore the application.
 ---
 
 ### config API keys
-1. 在 `agent` 目录下创建 `.env` 文件
+1.	Create a .env file in the agent directory:
 ```
 API_KEY=XXX
 MODEL=gpt-4o-mini
@@ -197,7 +197,7 @@ AMAP_MAPS_API_KEY=XXX
 
 ```
 
-2. 在 `frontend` 目录下创建 `.env.local` 文件
+2.	Create a .env.local file in the frontend directory:
 ```
 NEXT_PUBLIC_AMAP_KEY=XXX
 NEXT_PUBLIC_AMAP_SECURITY_CODE=XXX
