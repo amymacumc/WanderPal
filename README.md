@@ -104,6 +104,41 @@ python main.py
 6. *(Planned feature)* Users can edit, fine-tune, and save itineraries into a personal archive.
 7. *(Planned feature)* Agent checks for common trip issues and gently suggests improvements.
 
+```mermaid
+flowchart TD
+    A[User starts application / accesses feature] --> B[App checks user profile status]
+    B --> C[Backend queries user profile from Database]
+    C --> D[Database returns profile status]
+
+    D -->|Profile incomplete| E[App notifies user to fill profile]
+    E --> F[User provides profile information]
+    F --> G[App saves profile info to Backend]
+    G --> H[Backend updates Database]
+    H --> I[Database confirms update]
+    I --> J[Backend confirms profile updated]
+
+    D -->|Profile complete| K[Display AI Assistant options]
+    J --> K
+
+    K --> L[User selects an AI Assistant]
+    L --> M[App initializes conversation with Backend and AI Service]
+    M --> N[AI gathers trip preferences (date, destination, budget, style, mood)]
+
+    N --> O[AI notifies completion and generates travel plans]
+    O --> P[Backend requests AI to provide plans]
+    P --> Q[AI returns generated plans]
+    Q --> R[Backend forwards plans to App]
+    R --> S[App displays trip plan options]
+
+    S --> T[User selects a trip plan]
+    T --> U[App saves selected plan to Backend]
+    U --> V[Backend stores plan in Database]
+    V --> W[Database confirms storage]
+    W --> X[Backend confirms plan saved]
+```
+---
+
+## 🔥 System Design
 
 ```mermaid
 sequenceDiagram
