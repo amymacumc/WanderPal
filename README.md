@@ -180,6 +180,7 @@ sequenceDiagram
 git clone https://github.com/amymacumc/WanderPal.git
 cd WanderPal
 npm install
+cd frontend
 npm run dev
 ```
 
