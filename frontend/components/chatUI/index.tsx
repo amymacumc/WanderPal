@@ -1,5 +1,6 @@
 "use client"
 import React, { useRef, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Input from './Input';
 import TipBubble from './TipBubble';
 import BubbleList from './BubbleList';
@@ -15,8 +16,24 @@ const TipList = [
     '重庆三日游怎么安排'
 ]
 
+function getAvatar(companionName: string) {
+    if (companionName === '轻松疗愈') {
+        return '/images/轻松疗愈.png';
+    }
+    if (companionName === '贴心管家') {
+        return '/images/贴心管家.png';
+    }
+    if (companionName === '灵感探索') {
+        return '/images/灵感探索.png';
+    }
+    return 'https://cataas.com/cat';
+}
+
 const ChatUI: React.FC = () => {
   const {messages, input, setInput, append} = useChat([]);
+  const searchParams = useSearchParams();
+  const companionName = searchParams.get('companion');
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -33,7 +50,7 @@ const ChatUI: React.FC = () => {
          <Header 
            avatar={
                <img 
-                   src="https://cataas.com/cat" 
+                   src={getAvatar(companionName || '')}
                    alt="AI Assistant" 
                    className="w-full h-full object-cover"
                />

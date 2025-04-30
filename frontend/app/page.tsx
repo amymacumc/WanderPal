@@ -8,22 +8,22 @@ import Rotate from "@/components/Rotate";
 
 const companions = [
     {
-        name: "拍照达人",
-        avatar: "/images/bulter.png",
+        name: "轻松疗愈",
+        avatar: "/images/轻松疗愈.png",
         description: "AI 助手",
-        text: "我会带你去每个景点，记录你的旅行瞬间，分享给你"
+        text: "我会结合您的身心状态，为您推荐舒适放松的疗愈系旅行体验"
     },
     {
         name: "贴心管家",
-        avatar: "/images/bulter.png",
+        avatar: "/images/贴心管家.png",
         description: "AI 助手",
         text: "我会根据你的目的地和详细需求，生成全面和细致的专业行程规划"
     },
     {
-        name: "撸猫爱好者",
-        avatar: "/images/bulter.png",
+        name: "灵感探索",
+        avatar: "/images/灵感探索.png",
         description: "AI 助手",
-        text: "我会带你去撸猫猫，记录你的旅行瞬间，分享给你"
+        text: "我会根据您的兴趣和好奇心，为您打造充满启发和惊喜的探索之旅"
     }
 ]
 
