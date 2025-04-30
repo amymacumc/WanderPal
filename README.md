@@ -32,13 +32,15 @@ Our mission is to help users plan meaningful, personalized journeys — not just
 
 - 🤗 Companion-style conversations: Warm, dynamic, and friendly agent personalities adapt to your mood and travel goals.
 - 🗺️ Smart route planning: Integrated with AMap function calling to automatically generate efficient travel routes and realistic daily plans.
-- 🧠 Proactive trip validation: Allows user editing and detects unreasonable itineraries and gently advises improvements (to be developed).
+- 🧠 Proactive trip validation: Allows user editing and detects unreasonable itineraries and gently advises improvements (Planned Feature).
+
+⚠️ This project is designed and demonstrated in Chinese. We recommend using a browser translation plugin (e.g., Google Translate) to view the content in English.
 
 ---
 
 ## 🚀 Key Features
 
-- 🎭 Personalized Agent Selection: Choose from 3 emotional modes — Gentle Care, Thoughtful Butler, or Bold Explorer.
+- 🎭 Personalized Agent Selection: Choose from 3 emotional modes — Thoughtful Butler (Current Feature), Gentle Care or Bold Explorer (Planned Feature).
 - ✨ Companion-style Chat UX: Guided prompts to collect travel needs (time, destination, budget, mood, style).
 - 🗺️ Smart Route Optimization: Automatically sequence daily routes with AMap function calling.
 - 🛠️ Real-time Reasonability Checks: Validate opening hours, traffic time, route duplication, and over-scheduling.
@@ -49,11 +51,11 @@ Our mission is to help users plan meaningful, personalized journeys — not just
 ## 💖 Agent Personality Overview
 
 We offer three distinct Agent modes to cater to different user preferences for personalized travel planning:
-- **Free Spirit (Healing & Gentle Companion)**
-A warm and empathetic Agent that invites users to share their current mood and travel inspirations. Whether you’re seeking an escape from the hustle or a place for inner healing, this Agent will accompany you in designing a soft, thoughtful journey.
-- **Personal Butler (Efficient & Detail-Oriented Planner)**
+- **Current Agent: Personal Butler (Efficient & Detail-Oriented Planner)**
 A professional and attentive Agent that focuses on fulfilling users’ practical travel needs. Whether it’s precise transportation arrangements or detailed budget planning, this Agent delivers highly efficient and personalized itineraries.
-- **Inspiration Explorer (Adventurous & Bold Guide)**
+- **Future Agent: Free Spirit (Healing & Gentle Companion)**
+A warm and empathetic Agent that invites users to share their current mood and travel inspirations. Whether you’re seeking an escape from the hustle or a place for inner healing, this Agent will accompany you in designing a soft, thoughtful journey.
+- **Future Agent: Inspiration Explorer (Adventurous & Bold Guide)**
 A playful and daring Agent that helps users discover unique, off-the-beaten-path destinations. From transparent bubble houses by the forest to hidden cafés in abandoned trains, this Agent sparks spontaneous, exciting adventures tailored to your mood.
 
 ---
@@ -64,7 +66,7 @@ A playful and daring Agent that helps users discover unique, off-the-beaten-path
 - Backend: Python
 - AI Engine: OpenAI GPT-4o
 - Framework: Autogen
-- Map Service: AMap function calling
+- Map Service: AMap MCP (We use AMap MCP to generate realistic, time-aware, and efficient itineraries, including transportation methods and walking distances between landmarks. Compared to other APIs, Amap MCP is ideal for agents because it offers structured, high-level travel and map planning functions that align perfectly with agent workflows and function calling.)
 - Deployment: Vercel
 
 ---
@@ -232,12 +234,12 @@ python main.py
 
 **👩 Character Profile**
 
-- Name: Emily
-- Age: 29
-- City: Manhattan, New York
-- Occupation: Marketing Manager
-- MBTI: INFP
-- Travel Goals: Seeking a relaxing, emotionally healing short trip with budget control, real reviews, flexible planning.
+- **Name**: Emily  
+- **Age**: 29  
+- **City**: Manhattan, New York  
+- **Occupation**: Marketing Manager  
+- **MBTI**: INFP  
+- **Travel Goals**: Seeking a relaxing, emotionally healing short trip with budget control, real reviews, flexible planning.
 
 ---
 
@@ -245,14 +247,15 @@ python main.py
 
 #### ✅ Step 1: Registration and Agent Selection
 
+Emily fills in the profile form, and select the Personal Butler travel agent. Then she receives greetings from the chatbox:
 > "Good morning! I’m your personal travel concierge, WanderPal ☕ Welcome back. Let’s design a journey that’s gentle, personal, and made just for you."
 
 #### ✅ Step 2: Collecting Core Travel Information
 
-| Prompt | Emily’s Response | System Handling |
+| **Prompt** | **Emily’s Response** | **System Handling** |
 |:---|:---|:---|
-| Travel Time | "Mid-May, about 5 days." | Date picker — May 12–17 |
-| Destination | "Not decided yet." | Suggests Japan, California, South of France, Quebec, or Other |
+| Travel Time | "May 12–17." | Sets exact travel window |
+| Destination | "Tokyo, Japan." | Locks destination as Tokyo |
 | Budget | "Under $3000." | Sets budget range $2000–$3000 |
 | Trip Style | "Culture, coffee shops, photogenic places." | Maps to "Cultural Exploration + Photo Spots" |
 | Travel Intensity | "I want to sleep in." | Relaxed pace mode (max 8h/day) |
@@ -263,16 +266,17 @@ python main.py
 
 #### ✅ Step 3: Generating Candidate Trip Cards
 
-- Plan A: Tokyo Urban Healing Tour
-- Plan B: California Art & Nature Getaway
-- Plan C: Southern France Garden Tour
+- **Plan A**: Tokyo Urban Healing Tour  
+- **Plan B**: Tokyo Zen + Art Walk  
+- **Plan C**: Tokyo Hidden Cafés & Local Life
 
 #### ✅ Step 4: Detailed Daily Schedule & Smart Suggestions
 
 Each day’s plan includes:
-- Interactive daily map view
-- Transport (metro/walk/drive) with estimated costs
-- Attraction tips (open hours, entrance fees, special notes)
+
+- Interactive daily map view  
+- Transport (metro/walk/drive) with estimated costs  
+- Attraction tips (open hours, entrance fees, special notes)  
 - Clothing suggestions, cultural tips, weather alerts
 
 #### ✅ Step 5: Saving and Feedback
@@ -285,7 +289,7 @@ User saves the itinerary and receives a warm confirmation.
 
 ### ✅ Summary: How WanderPal Fulfilled Emily’s Needs
 
-| User Need | WanderPal’s Response |
+| **User Need** | **WanderPal’s Response** |
 |:---|:---|
 | Quickly generate viable plans | Companion-style onboarding + dynamic chatbox |
 | Flexible trip pacing | Relaxed mode with daily limits |
@@ -294,5 +298,3 @@ User saves the itinerary and receives a warm confirmation.
 | Edit freedom | Add/remove attractions |
 | Emotional support | Companion tone, mood recognition |
 | Archive and collaboration | Saved trips, editable itineraries |
-
----
