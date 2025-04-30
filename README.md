@@ -195,8 +195,8 @@ sequenceDiagram
 ```bash
 git clone https://github.com/amymacumc/WanderPal.git
 cd WanderPal
-npm install
 cd frontend
+npm install
 npm run dev
 ```
 
