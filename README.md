@@ -26,7 +26,7 @@
 
 ## ✨ Project Overview
 
-WanderPal is an AI-powered travel planning agent that combines emotionally intelligent dialogue with automated itinerary generation based on real-world map data (AMap function calling).
+WanderPal is an AI-powered travel planning agent that combines emotionally intelligent dialogue with automated itinerary generation based on real-world map data (AMap MCP function calling).
 
 Our mission is to help users plan meaningful, personalized journeys — not just book trips, but feel understood while building flexible, optimized itineraries.
 
@@ -41,14 +41,20 @@ Our mission is to help users plan meaningful, personalized journeys — not just
 ## 🚀 Key Features
 
 - 🎭 Personalized Agent Selection: Choose from 3 emotional modes — Thoughtful Butler (Current Feature), Gentle Care or Bold Explorer (Planned Feature).
+- <p align="center">
+  <img src="https://github.com/user-attachments/assets/537a2b22-4a6d-4875-9b2d-debf3448c2c4" width="200"/>
+</p>
 
-  <img width="303" alt="image" src="https://github.com/user-attachments/assets/537a2b22-4a6d-4875-9b2d-debf3448c2c4" />
 - ✨ Companion-style Chat UX: Guided prompts to collect travel needs (time, destination, budget, mood, style).
+- <p align="center">
+  <img src="https://github.com/user-attachments/assets/cf00a365-5df1-4fc2-b14d-e2f684c01c23" width="200"/>
+</p>
 
-  <img width="306" alt="image" src="https://github.com/user-attachments/assets/cf00a365-5df1-4fc2-b14d-e2f684c01c23" />
 - 🗺️ Smart Route Optimization: Automatically sequence daily routes with AMap function calling.
+- <p align="center">
+  <img src="https://github.com/user-attachments/assets/d74b71ce-5af1-45cc-b282-36c048bdc0ed" width="200"/>
+</p>
 
-  <img width="311" alt="image" src="https://github.com/user-attachments/assets/d74b71ce-5af1-45cc-b282-36c048bdc0ed" />
 - 🛠️ *(Planned feature)* Real-time Reasonability Checks: Validate opening hours, traffic time, route duplication, and over-scheduling.
 - 📚 Pre-Departure Smart Reminders: Provide cultural tips, visa advice, and packing checklists.
 
@@ -173,8 +179,7 @@ sequenceDiagram
 
 ## 🎬 Demo & Links
 
-- **Youtube video**:
-- **Live Demo**: [https://wanderpal.vercel.app/](https://wanderpal.vercel.app/)
+- **Youtube video**: [https://www.youtube.com/watch?v=BRUnn-51g4U]
 - **Frontend Repository**: [https://github.com/amymacumc/WanderPal](https://github.com/amymacumc/WanderPal)
 - **Backend Repository**: [https://github.com/amymacumc/WanderPal/tree/main/agent](https://github.com/amymacumc/WanderPal/tree/main/agent)
 
