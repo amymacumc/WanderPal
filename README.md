@@ -270,7 +270,7 @@ Emily fills in the profile form, and select the Personal Butler travel agent. Th
 |:---|:---|:---|
 | Travel Time | "May 12–17." | Sets exact travel window |
 | Destination | "Tokyo, Japan." | Locks destination as Tokyo |
-| Budget | "Under $3000." | Sets budget range $2000–$3000 |
+| Budget | "Under $3000." | Sets budget range $$$ |
 | Trip Style | "Culture, coffee shops, photogenic places." | Maps to "Cultural Exploration + Photo Spots" |
 | Travel Intensity | "I want to sleep in." | Relaxed pace mode (max 8h/day) |
 | Mood Status | "Burnt out… need a reset." | Triggers Gentle & Healing destination matching |
@@ -289,9 +289,8 @@ Emily fills in the profile form, and select the Personal Butler travel agent. Th
 Each day’s plan includes:
 
 - Interactive daily map view  
-- Transport (metro/walk/drive) with estimated costs  
-- Attraction tips (open hours, entrance fees, special notes)  
-- Clothing suggestions, cultural tips, weather alerts
+- Transport (metro/walk/drive) with travel distance
+- Attraction tips (open hours, entrance fees)  
 
 #### ✅ Step 5: Saving and Feedback
 
