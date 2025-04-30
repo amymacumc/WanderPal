@@ -79,7 +79,7 @@ A playful and daring Agent that helps users discover unique, off-the-beaten-path
 
 - Frontend: Node.js
 - Backend: Python
-- AI Engine: OpenAI GPT-4o
+- AI Engine: OpenAI GPT-4o-mini
 - Framework: Autogen
 - Map Service: AMap MCP (We use AMap MCP to generate realistic, time-aware, and efficient itineraries, including transportation methods and walking distances between landmarks. Compared to other APIs, Amap MCP is ideal for agents because it offers structured, high-level travel and map planning functions that align perfectly with agent workflows and function calling.)
 - Deployment: Vercel
