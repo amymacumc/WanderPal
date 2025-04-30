@@ -41,10 +41,13 @@ Our mission is to help users plan meaningful, personalized journeys — not just
 ## 🚀 Key Features
 
 - 🎭 Personalized Agent Selection: Choose from 3 emotional modes — Thoughtful Butler (Current Feature), Gentle Care or Bold Explorer (Planned Feature).
+
   <img width="303" alt="image" src="https://github.com/user-attachments/assets/537a2b22-4a6d-4875-9b2d-debf3448c2c4" />
 - ✨ Companion-style Chat UX: Guided prompts to collect travel needs (time, destination, budget, mood, style).
+
   <img width="306" alt="image" src="https://github.com/user-attachments/assets/cf00a365-5df1-4fc2-b14d-e2f684c01c23" />
 - 🗺️ Smart Route Optimization: Automatically sequence daily routes with AMap function calling.
+
   <img width="311" alt="image" src="https://github.com/user-attachments/assets/d74b71ce-5af1-45cc-b282-36c048bdc0ed" />
 - 🛠️ *(Planned feature)* Real-time Reasonability Checks: Validate opening hours, traffic time, route duplication, and over-scheduling.
 - 📚 Pre-Departure Smart Reminders: Provide cultural tips, visa advice, and packing checklists.
